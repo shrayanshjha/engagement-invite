@@ -40,9 +40,13 @@
 }
 
 .heart {
+    display: inline-block;   /* important */
     font-size: 28px;
     margin: 8px 0;
+
     animation: heartbeat 1s infinite;
+
+    transform-origin: center; /* prevents shifting */
 }
 
 /* Heart animation */
