@@ -63,9 +63,10 @@ body {
     color: black;
     font-weight: bold;
     text-decoration: none;
+    border: none;
 }
 
-/* COUNTDOWN BOX */
+/* COUNTDOWN */
 #countdown {
     display: flex;
     justify-content: center;
@@ -85,10 +86,29 @@ body {
     margin: 5px;
     border-radius: 12px;
 }
+
+/* POPUP */
+#welcome {
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:9999;
+}
 </style>
 </head>
 
 <body>
+
+<!-- ENTRY POPUP -->
+<div id="welcome">
+  <h2 style="color:gold;">Welcome 💍</h2>
+  <button onclick="enterSite()" class="button">Enter Invitation</button>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -100,7 +120,6 @@ body {
 
 <!-- MAIN CARD -->
 <div class="card">
-
     <p>We invite you to celebrate our special day</p>
 
     <p>📍 Venue: Hotel GK Jain</p>
@@ -120,7 +139,6 @@ body {
     <br>
 
     <button onclick="toggleMusic()" class="button">🎵 Music</button>
-
 </div>
 
 <!-- COUPLE IMAGE -->
@@ -142,7 +160,15 @@ body {
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+<!-- CONFETTI (FIXED LIGHT VERSION) -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 <script>
+// ENTER BUTTON FIX
+function enterSite(){
+  document.getElementById("welcome").style.display = "none";
+}
+
 // MUSIC CONTROL
 function toggleMusic(){
   let music = document.getElementById("music");
@@ -171,6 +197,16 @@ setInterval(function() {
    <div>${m}<br>Min</div>
    <div>${s}<br>Sec</div>`;
 }, 1000);
+
+// LIGHT CONFETTI (NOT OVERPOWERING)
+setInterval(() => {
+  confetti({
+    particleCount: 10,
+    spread: 50,
+    origin: { y: 0.6 }
+  });
+}, 4000);
+
 </script>
 
 </body>
