@@ -9,6 +9,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
+    /* SPARKLES */
+.sparkle {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    animation: sparkleFloat linear infinite, twinkle 1.5s infinite alternate;
+}
+
+.sparkle.gold {
+    background: radial-gradient(circle, #ffd700, #c9a34a);
+    box-shadow: 0 0 8px #ffd700;
+}
+
+.sparkle.silver {
+    background: radial-gradient(circle, #ffffff, #c0c0c0);
+    box-shadow: 0 0 6px #ffffff;
+}
+
+@keyframes sparkleFloat {
+    from { transform: translateY(0); }
+    to { transform: translateY(100vh); }
+}
+
+@keyframes twinkle {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
     .button:hover {
     box-shadow: 0 0 15px rgba(201,163,74,0.7);
     transform: scale(1.05);
@@ -303,7 +333,7 @@ body {
 </head>
 
 <body>
-
+<div id="sparkles"></div>
 <!-- FRAME -->
 <div class="frame1"></div>
 <div class="frame2"></div>
@@ -380,6 +410,22 @@ function createPetal() {
 }
 
 setInterval(createPetal, 500);
+
+    function createSparkle() {
+    const s = document.createElement("div");
+    s.classList.add("sparkle");
+    s.classList.add(Math.random() > 0.5 ? "gold" : "silver");
+
+    s.style.left = Math.random() * window.innerWidth + "px";
+    s.style.top = "-10px";
+    s.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 8000);
+}
+
+// Balanced (important)
+setInterval(createSparkle, 500);
 
 </script>
     <audio autoplay loop>
