@@ -16,7 +16,18 @@
     text-align: center;
     margin: 20px 0;
 }
+.title {
+    background: linear-gradient(90deg, #c9a34a, #fff2c2, #c9a34a);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+}
 
+@keyframes shine {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
 .name {
     font-family: 'Cinzel', serif;
     font-size: 34px;
@@ -165,6 +176,13 @@ body {
 .text {
     margin: 10px 0;
 }
+    
+.petal {
+    background: #f8c8dc;
+    opacity: 0.5;
+    border-radius: 50%;
+    filter: blur(1px);
+}
 
 /* BUTTON */
 .button {
@@ -192,6 +210,20 @@ body {
     width: 65vw;
     max-width: 340px;
     z-index: 2;
+}
+    .couple {
+    animation: fadeInRight 2s ease;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* FLOWER */
@@ -266,11 +298,10 @@ body {
 
 <div class="text"><b> 04 May 2026 </b></div>
 
-<div class="text">📍 Hotel GK Jain</div>
-
-<a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6?g_st=ac" target="_blank">
-View Location
-</a>
+<div class="text">📍 Hotel GK Jain </div>
+    <a class="button" href="https://www.google.com/maps/dir/?api=1&destination=Hotel+GK+Jain" target="_blank">
+Get Directions 🚗
+    </a>
 
 <br>
 
@@ -322,6 +353,9 @@ function createPetal() {
 setInterval(createPetal, 500);
 
 </script>
+    <audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
 </body>
 </html>
