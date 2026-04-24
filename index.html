@@ -6,58 +6,54 @@
 
 <title>Shrayansh ❤️ Payal | Engagement</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #000000, #3b0000),
-url('https://www.transparenttextures.com/patterns/black-felt.png');
+    url('https://www.transparenttextures.com/patterns/black-felt.png');
     color: white;
     text-align: center;
-    overflow-x: hidden;
 }
 
-/* Floating animation */
-@keyframes float {
-    0% { transform: translateY(0px);}
-    50% { transform: translateY(-10px);}
-    100% { transform: translateY(0px);}
+/* HERO */
+.hero {
+    padding: 60px 20px;
 }
-
-.container {
-    padding: 20px;
-}
-
-h1 {
-    font-family: 'Cinzel', serif;
+.hero h1 {
+    font-size: 28px;
     color: gold;
-    font-size: 34px;
-    animation: float 3s infinite;
+}
+@media(min-width:768px){
+  .hero h1 { font-size: 36px; }
 }
 
+/* NAMES */
 .names {
-    font-size: 30px;
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
     color: #ffd700;
-    margin: 20px 0;
+    letter-spacing: 2px;
+    margin: 15px 0;
 }
 
+/* CARD */
 .card {
     background: rgba(0,0,0,0.65);
     border: 1px solid gold;
     border-radius: 20px;
-    padding: 25px;
+    padding: 20px;
     margin: 20px;
-    box-shadow: 0 0 25px rgba(255,215,0,0.4);
+    box-shadow: 0 0 25px rgba(255,215,0,0.3);
+    transition: 0.5s;
+}
+.card:hover {
+    transform: scale(1.03);
 }
 
-.countdown {
-    margin-top: 15px;
-    font-size: 20px;
-    color: gold;
-}
-
+/* BUTTON */
 .button {
     display: inline-block;
     margin: 10px;
@@ -69,80 +65,95 @@ h1 {
     text-decoration: none;
 }
 
-/* Gallery */
+/* COUNTDOWN BOX */
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+#countdown div {
+    background: black;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid gold;
+}
+
+/* GALLERY */
 .gallery img {
     width: 45%;
     margin: 5px;
     border-radius: 12px;
 }
-
-/* Fade animation */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 1s;
-}
-
-.show {
-    opacity: 1;
-    transform: translateY(0);
-}
 </style>
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<script>
-setInterval(() => {
-  confetti({
-    particleCount: 20,
-    spread: 70,
-    origin: { y: 0.6 }
-  });
-}, 2000);
-</script>
-    <div id="welcome" style="position:fixed;top:0;left:0;width:1<h2>Welcome to Our Engagement 💍</h2>
-<button onclick="document.getElementById('welcome').style.display='none'" style="padding:10px 20px;border:none;background:gold;">Enter</button>
-    </div>
 
-    <div class="card fade-in">
-        <div class="names">Shrayansh ❤️ Payal</div>
+<!-- HERO -->
+<section class="hero">
+  <h1>💍 Engagement Invitation 💍</h1>
+  <div class="names">Shrayansh ❤️ Payal</div>
+  <p>Are Getting Engaged</p>
+  <p>04 May 2026</p>
+</section>
 
-        <p>We invite you to celebrate our special moment</p>
+<!-- MAIN CARD -->
+<div class="card">
 
-        <p>📅 04 May 2026</p>
-     <p>📍 Venue: Hotel GK Jain</p>
-<a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6?g_st=ac" target="_blank">
-Open in Maps 🗺️
-</a>
+    <p>We invite you to celebrate our special day</p>
 
-        <div class="countdown" id="countdown"></div>
+    <p>📍 Venue: Hotel GK Jain</p>
 
-    </div>
+    <a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6?g_st=ac" target="_blank">
+        📍 View Location
+    </a>
 
-    <!-- Gallery 
-    <div class="card fade-in">
-        <h2 style="color:gold;">Memories 💕</h2>
-        <div class="gallery">
-            <img src="img1.jpg">
-            <img src="img2.jpg">
-        </div>
-    </div> -->
+    <div id="countdown"></div>
+
+    <br>
+
+    <a class="button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Shrayansh%20%26%20Payal%20Engagement&dates=20260504T120000Z/20260504T150000Z">
+        📅 Add to Calendar
+    </a>
+
+    <br>
+
+    <button onclick="toggleMusic()" class="button">🎵 Music</button>
 
 </div>
 
-<!-- Background Music -->
+<!-- COUPLE IMAGE -->
+<div class="card">
+    <h2 style="color:gold;">Our Moments 💕</h2>
+    <img src="yourphoto.jpg" style="width:100%;border-radius:20px;margin-top:15px;">
+</div>
+
+<!-- GALLERY -->
+<div class="card">
+    <div class="gallery">
+        <img src="img1.jpg">
+        <img src="img2.jpg">
+    </div>
+</div>
+
+<!-- MUSIC -->
 <audio id="music" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// Autoplay music on first tap
-document.body.addEventListener('click', function() {
-    document.getElementById("music").play();
-}, { once: true });
+// MUSIC CONTROL
+function toggleMusic(){
+  let music = document.getElementById("music");
+  if(music.paused){
+    music.play();
+  } else {
+    music.pause();
+  }
+}
 
-// Countdown
+// COUNTDOWN
 var countDownDate = new Date("May 4, 2026 18:00:00").getTime();
 
 setInterval(function() {
@@ -155,20 +166,11 @@ setInterval(function() {
   var s = Math.floor((distance % (1000*60))/1000);
 
   document.getElementById("countdown").innerHTML =
-  "⏳ " + d + "d " + h + "h " + m + "m " + s + "s";
+  `<div>${d}<br>Days</div>
+   <div>${h}<br>Hours</div>
+   <div>${m}<br>Min</div>
+   <div>${s}<br>Sec</div>`;
 }, 1000);
-
-// Scroll animation
-let elements = document.querySelectorAll('.fade-in');
-window.addEventListener('scroll', () => {
-    elements.forEach(el => {
-        let position = el.getBoundingClientRect().top;
-        let screen = window.innerHeight;
-        if(position < screen - 50){
-            el.classList.add('show');
-        }
-    });
-});
 </script>
 
 </body>
