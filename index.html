@@ -16,58 +16,55 @@ body {
     font-family: 'Poppins', sans-serif;
     background: #f5e6dc;
     color: #5a3e36;
-    text-align: center;
+    overflow-x: hidden;
 }
 
-/* GOLD FRAME */
-.frame {
+/* DOUBLE FRAME */
+.frame1, .frame2 {
     position: fixed;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    border: 3px solid #c9a34a;
     border-radius: 20px;
     pointer-events: none;
-    z-index: 1;
+}
+.frame1 {
+    top: 15px; left: 15px; right: 15px; bottom: 15px;
+    border: 2px solid #c9a34a;
+}
+.frame2 {
+    top: 25px; left: 25px; right: 25px; bottom: 25px;
+    border: 1px solid #c9a34a;
 }
 
-/* MAIN CONTENT */
+/* CONTENT */
 .container {
-    position: relative;
-    z-index: 2;
-    padding: 40px 20px;
+    text-align: center;
+    padding: 80px 20px;
+    animation: fadeIn 2s ease;
 }
 
-/* HEADER */
-h1 {
+/* TEXT STYLES */
+.title {
     font-family: 'Cinzel', serif;
+    font-size: 26px;
     color: #b68b2c;
-    font-size: 28px;
 }
 
 .names {
     font-family: 'Cinzel', serif;
-    font-size: 30px;
+    font-size: 34px;
     color: #b68b2c;
     margin: 10px 0;
+    animation: glow 2s infinite alternate;
 }
 
-/* CARD */
-.card {
-    background: rgba(255,255,255,0.7);
-    border: 1px solid #c9a34a;
-    border-radius: 20px;
-    padding: 20px;
-    margin: 20px;
-    backdrop-filter: blur(5px);
+.text {
+    margin: 10px 0;
 }
 
 /* BUTTON */
 .button {
     display: inline-block;
     margin: 10px;
-    padding: 10px 20px;
+    padding: 10px 22px;
     border-radius: 25px;
     background: #c9a34a;
     color: white;
@@ -77,22 +74,60 @@ h1 {
 
 /* COUNTDOWN */
 #countdown {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
     margin-top: 15px;
-}
-#countdown div {
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #c9a34a;
+    font-size: 15px;
 }
 
-/* COUPLE IMAGE POSITION */
+/* COUPLE IMAGE */
 .couple {
-    width: 250px;
-    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    width: 220px;
+}
+
+/* FLOWER */
+.flower {
+    position: fixed;
+    bottom: 20px;
+    left: 10px;
+    width: 120px;
+    opacity: 0.5;
+}
+
+/* RING */
+.ring {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    font-size: 30px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+}
+@keyframes glow {
+    from {text-shadow: 0 0 5px gold;}
+    to {text-shadow: 0 0 20px gold;}
+}
+
+/* PETALS */
+.petal {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    background: pink;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: fall linear infinite;
+}
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
 }
 
 </style>
@@ -100,43 +135,48 @@ h1 {
 
 <body>
 
-<div class="frame"></div>
+<!-- FRAME -->
+<div class="frame1"></div>
+<div class="frame2"></div>
 
+<!-- RING -->
+<div class="ring">💍</div>
+
+<!-- MAIN CONTENT -->
 <div class="container">
 
-<h1>💍 Engagement Invitation 💍</h1>
+<div class="title">Engagement Invitation</div>
 
 <div class="names">Shrayansh ❤️ Payal</div>
 
-<p>We invite you to celebrate our special day</p>
+<div class="text">With love, we invite you to celebrate</div>
 
-<p><b>📅 04 May 2026</b></p>
+<div class="text"><b>04 May 2026 | 1:00 PM</b></div>
 
-<div class="card">
-
-<p>📍 Venue: Hotel GK Jain</p>
+<div class="text">📍 Hotel GK Jain</div>
 
 <a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6?g_st=ac" target="_blank">
-📍 View Location
+View Location
+</a>
+
+<br>
+
+<a class="button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Engagement&dates=20260504T073000Z/20260504T103000Z">
+Add to Calendar
 </a>
 
 <div id="countdown"></div>
 
-<a class="button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Shrayansh%20%26%20Payal%20Engagement&dates=20260504T120000Z/20260504T150000Z">
-📅 Add to Calendar
-</a>
-
 </div>
 
-<!-- COUPLE IMAGE (LIKE YOUR CARD) -->
+<!-- IMAGES -->
 <img src="couple.png" class="couple">
-
-</div>
+<img src="flower.png" class="flower">
 
 <script>
 
-// COUNTDOWN
-var countDownDate = new Date("May 4, 2026 18:00:00").getTime();
+/* COUNTDOWN (UPDATED 1 PM) */
+var countDownDate = new Date("May 4, 2026 13:00:00").getTime();
 
 setInterval(function() {
   var now = new Date().getTime();
@@ -145,14 +185,23 @@ setInterval(function() {
   var d = Math.floor(distance / (1000*60*60*24));
   var h = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
   var m = Math.floor((distance % (1000*60*60))/(1000*60));
-  var s = Math.floor((distance % (1000*60))/1000);
 
   document.getElementById("countdown").innerHTML =
-  `<div>${d}<br>Days</div>
-   <div>${h}<br>Hours</div>
-   <div>${m}<br>Min</div>
-   <div>${s}<br>Sec</div>`;
+  "⏳ " + d + " days " + h + " hrs " + m + " min left";
 }, 1000);
+
+/* PETAL ANIMATION */
+function createPetal() {
+  const petal = document.createElement("div");
+  petal.classList.add("petal");
+  petal.style.left = Math.random() * window.innerWidth + "px";
+  petal.style.animationDuration = (5 + Math.random() * 5) + "s";
+  document.body.appendChild(petal);
+
+  setTimeout(() => petal.remove(), 10000);
+}
+
+setInterval(createPetal, 500);
 
 </script>
 
