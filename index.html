@@ -433,35 +433,7 @@ Get Directions 🚗
 Add to Calendar
 </a> -->
 
-<div id="countdown" class="countdown-box ></div>
-
-</div>
-
-<!-- IMAGES -->
-<img src="couple.png" class="couple">
-
-    
-<!-- LEFT FLORAL -->
-<div class="floral floral-left"></div>
-
-<!-- RIGHT FLORAL -->
-<div class="floral floral-right"></div>
-<script>
-
-/* COUNTDOWN (UPDATED 1 PM) 
-var countDownDate = new Date("May 4, 2026 13:00:00").getTime();
-
-setInterval(function() {
-  var now = new Date().getTime();
-  var distance = countDownDate - now;
-
-  var d = Math.floor(distance / (1000*60*60*24));
-  var h = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-  var m = Math.floor((distance % (1000*60*60))/(1000*60));
-
-  document.getElementById("countdown").innerHTML =
-  "⏳ " + d + " days " + h + " hrs " + m + " min left";
-}, 1000);*/
+<!--<div id="countdown" class="countdown-box ></div>-->
     document.getElementById("countdown").innerHTML =
 `
 <div>
@@ -481,6 +453,35 @@ setInterval(function() {
   <div class="count-label">Sec</div>
 </div>
 `;
+
+</div>
+
+<!-- IMAGES -->
+<img src="couple.png" class="couple">
+
+    
+<!-- LEFT FLORAL -->
+<div class="floral floral-left"></div>
+
+<!-- RIGHT FLORAL -->
+<div class="floral floral-right"></div>
+<script>
+
+/* COUNTDOWN (UPDATED 1 PM) */
+var countDownDate = new Date("May 4, 2026 13:00:00").getTime();
+
+setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+
+  var d = Math.floor(distance / (1000*60*60*24));
+  var h = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+  var m = Math.floor((distance % (1000*60*60))/(1000*60));
+
+  document.getElementById("countdown").innerHTML =
+  "⏳ " + d + " days " + h + " hrs " + m + " min left";
+}, 1000);
+    
 
 /* PETAL ANIMATION */
 function createPetal() {
