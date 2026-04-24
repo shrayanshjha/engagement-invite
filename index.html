@@ -331,7 +331,7 @@ body {
     right: 0;
     width: 65vw;
     max-width: 340px;
-    z-index: 2;
+    z-index: 10;
 }
 .couple {
     animation: fadeInLeft 2s ease 1s forwards;
@@ -436,7 +436,7 @@ Get Directions 🚗
 Add to Calendar
 </a> -->
 
-<div id="countdown" class="countdown-box ></div>
+<div id="countdown" class="countdown-box"></div>
     
 </div>
 
@@ -494,7 +494,7 @@ setInterval(createPetal, 500);
 }
 
 // Balanced (important)
-setInterval(createSparkle, 500);
+//setInterval(createSparkle, 500);
 function createStars() {
     for (let i = 0; i < 40; i++) {   // number of stars
         const s = document.createElement("div");
