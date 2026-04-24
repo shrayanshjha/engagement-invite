@@ -10,6 +10,7 @@
 
 <style>
     /* SPARKLES */
+/*    
 .sparkle {
     position: fixed;
     width: 5px;
@@ -37,7 +38,37 @@
 
 @keyframes twinkle {
     from { opacity: 0.4; }
-    to { opacity: 1; }
+    to { opacity: 1; } */
+    /* TWINKLE STARS */
+.sparkle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.8;
+    animation: twinkle 2s infinite ease-in-out alternate;
+}
+
+/* GOLD */
+.sparkle.gold {
+    background: radial-gradient(circle, #ffd700, #c9a34a);
+    box-shadow: 0 0 6px #ffd700;
+}
+
+/* SILVER */
+.sparkle.silver {
+    background: radial-gradient(circle, #ffffff, #c0c0c0);
+    box-shadow: 0 0 5px #ffffff;
+}
+
+/* TWINKLE ANIMATION */
+@keyframes twinkle {
+    0% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.5; transform: scale(1); }
+}
 }
     .button:hover {
     box-shadow: 0 0 15px rgba(201,163,74,0.7);
@@ -411,7 +442,7 @@ function createPetal() {
 
 setInterval(createPetal, 500);
 
-    function createSparkle() {
+    /*function createSparkle() {
     const s = document.createElement("div");
     s.classList.add("sparkle");
     s.classList.add(Math.random() > 0.5 ? "gold" : "silver");
@@ -425,8 +456,25 @@ setInterval(createPetal, 500);
 }
 
 // Balanced (important)
-setInterval(createSparkle, 500);
+setInterval(createSparkle, 500);*/
+function createStars() {
+    for (let i = 0; i < 40; i++) {   // number of stars
+        const s = document.createElement("div");
+        s.classList.add("sparkle");
 
+        s.classList.add(Math.random() > 0.5 ? "gold" : "silver");
+
+        s.style.left = Math.random() * window.innerWidth + "px";
+        s.style.top = Math.random() * window.innerHeight + "px";
+
+        s.style.animationDuration = (1.5 + Math.random() * 2) + "s";
+
+        document.body.appendChild(s);
+    }
+}
+
+// Create once (not continuous)
+createStars();
 </script>
     <audio autoplay loop>
   <source src="music.mp3" type="audio/mpeg">
