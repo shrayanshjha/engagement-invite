@@ -20,6 +20,10 @@
     text-align: center;
     margin: 20px 0;
 }
+    .name-block {
+    position: relative;
+    z-index: 5;
+    }
 .title {
     background: linear-gradient(90deg, #c9a34a, #fff2c2, #c9a34a);
     background-size: 200%;
@@ -43,11 +47,15 @@
     display: inline-block;   /* important */
     font-size: 28px;
     margin: 8px 0;
-
+    will-change: transform;
     animation: heartbeat 1s infinite;
 
     transform-origin: center; /* prevents shifting */
 }
+    .frame1, .frame2 {
+    position: fixed;
+    transform: none !important;
+    }
 
 /* Heart animation */
 @keyframes heartbeat {
