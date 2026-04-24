@@ -91,10 +91,19 @@ h1 {
 </head>
 
 <body>
-
-<div class="container">
-
-    <h1>💍 Engagement Invitation💍</h1>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+setInterval(() => {
+  confetti({
+    particleCount: 20,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+}, 2000);
+</script>
+    <div id="welcome" style="position:fixed;top:0;left:0;width:1<h2>Welcome to Our Engagement 💍</h2>
+<button onclick="document.getElementById('welcome').style.display='none'" style="padding:10px 20px;border:none;background:gold;">Enter</button>
+    </div>
 
     <div class="card fade-in">
         <div class="names">Shrayansh ❤️ Payal</div>
@@ -102,24 +111,23 @@ h1 {
         <p>We invite you to celebrate our special moment</p>
 
         <p>📅 04 May 2026</p>
-     <p>📍 Venue: Hotel GK Jain </p>
+     <p>📍 Venue: Hotel GK Jain</p>
+<a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6?g_st=ac" target="_blank">
+Open in Maps 🗺️
+</a>
 
         <div class="countdown" id="countdown"></div>
 
-        <a class="button" href="https://wa.me/?text=I%20will%20attend%20your%20engagement">RSVP 💬</a>
-        <a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6?g_st=ac" target="_blank">
-📍 View Venue
-        </a>
     </div>
 
-    <!-- Gallery -->
+    <!-- Gallery 
     <div class="card fade-in">
         <h2 style="color:gold;">Memories 💕</h2>
         <div class="gallery">
             <img src="img1.jpg">
             <img src="img2.jpg">
         </div>
-    </div>
+    </div> -->
 
 </div>
 
