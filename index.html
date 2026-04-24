@@ -9,6 +9,40 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
+    /* COUNTDOWN CONTAINER */
+.countdown-box {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* EACH BLOCK */
+.countdown-box div {
+    background: rgba(255,255,255,0.7);
+    border: 1px solid #c9a34a;
+    border-radius: 12px;
+    padding: 10px 12px;
+    min-width: 55px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* NUMBER */
+.count-num {
+    font-size: 20px;
+    font-weight: bold;
+    color: #b68b2c;
+}
+
+/* LABEL */
+.count-label {
+    font-size: 11px;
+    color: #5a3e36;
+}
+    .count-num {
+    text-shadow: 0 0 6px rgba(201,163,74,0.4);
+    }
     /* SPARKLES */
 /*    
 .sparkle {
@@ -399,7 +433,7 @@ Get Directions 🚗
 Add to Calendar
 </a> -->
 
-<div id="countdown"></div>
+<div id="countdown" class="countdown-box ></div>
 
 </div>
 
@@ -414,7 +448,7 @@ Add to Calendar
 <div class="floral floral-right"></div>
 <script>
 
-/* COUNTDOWN (UPDATED 1 PM) */
+/* COUNTDOWN (UPDATED 1 PM) 
 var countDownDate = new Date("May 4, 2026 13:00:00").getTime();
 
 setInterval(function() {
@@ -427,7 +461,26 @@ setInterval(function() {
 
   document.getElementById("countdown").innerHTML =
   "⏳ " + d + " days " + h + " hrs " + m + " min left";
-}, 1000);
+}, 1000);*/
+    document.getElementById("countdown").innerHTML =
+`
+<div>
+  <div class="count-num">${d}</div>
+  <div class="count-label">Days</div>
+</div>
+<div>
+  <div class="count-num">${h}</div>
+  <div class="count-label">Hours</div>
+</div>
+<div>
+  <div class="count-num">${m}</div>
+  <div class="count-label">Min</div>
+</div>
+<div>
+  <div class="count-num">${s}</div>
+  <div class="count-label">Sec</div>
+</div>
+`;
 
 /* PETAL ANIMATION */
 function createPetal() {
