@@ -400,20 +400,27 @@ body {
     font-family: 'Cinzel', serif;
     font-size: 14px;
     margin-top: 8px;
+    text-align: center;
+    line-height: 1.6;
 
-    /* Silver metallic effect */
+    /* Silver metallic */
     background: linear-gradient(90deg, #c0c0c0, #ffffff, #c0c0c0);
     background-size: 200%;
-    
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    animation: silverShine 3s linear infinite;
-    letter-spacing: 1px;
-    }
+    animation: silverShine 4s linear infinite;
+}
+
+/* Make & special */
+.amp {
+    font-size: 18px;
+    margin: 4px 0;
+}
 @keyframes silverShine {
     0% { background-position: 0%; }
     100% { background-position: 200%; }
+    animation: silverShine 5s linear infinite;
 }
 </style>
 </head>
@@ -440,7 +447,9 @@ body {
   <div class="name">Payal</div>
     </div>
     <div class="tagline">
-  Celebrate love, laughter & happily ever after
+  <div>Celebrate love, laughter</div>
+  <div class="amp">&</div>
+  <div>happily ever after</div>
     </div>
 <div class="text">With love, we invite you to celebrate</div>
 
