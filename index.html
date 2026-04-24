@@ -433,27 +433,8 @@ Get Directions 🚗
 Add to Calendar
 </a> -->
 
-<!--<div id="countdown" class="countdown-box ></div>-->
-    document.getElementById("countdown").innerHTML =
-`
-<div>
-  <div class="count-num">${d}</div>
-  <div class="count-label">Days</div>
-</div>
-<div>
-  <div class="count-num">${h}</div>
-  <div class="count-label">Hours</div>
-</div>
-<div>
-  <div class="count-num">${m}</div>
-  <div class="count-label">Min</div>
-</div>
-<div>
-  <div class="count-num">${s}</div>
-  <div class="count-label">Sec</div>
-</div>
-`;
-
+<div id="countdown" class="countdown-box ></div>
+    
 </div>
 
 <!-- IMAGES -->
@@ -477,11 +458,30 @@ setInterval(function() {
   var d = Math.floor(distance / (1000*60*60*24));
   var h = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
   var m = Math.floor((distance % (1000*60*60))/(1000*60));
-
+/*
   document.getElementById("countdown").innerHTML =
   "⏳ " + d + " days " + h + " hrs " + m + " min left";
 }, 1000);
-    
+  */
+    document.getElementById("countdown").innerHTML =
+`
+<div>
+  <div class="count-num">${d}</div>
+  <div class="count-label">Days</div>
+</div>
+<div>
+  <div class="count-num">${h}</div>
+  <div class="count-label">Hours</div>
+</div>
+<div>
+  <div class="count-num">${m}</div>
+  <div class="count-label">Min</div>
+</div>
+<div>
+  <div class="count-num">${s}</div>
+  <div class="count-label">Sec</div>
+</div>
+`;
 
 /* PETAL ANIMATION */
 function createPetal() {
