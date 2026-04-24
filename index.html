@@ -9,61 +9,70 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
+
+/* BACKGROUND */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #000000, #3b0000),
-    url('https://www.transparenttextures.com/patterns/black-felt.png');
-    color: white;
+    background: #f5e6dc;
+    color: #5a3e36;
     text-align: center;
 }
 
-/* HERO */
-.hero {
-    padding: 60px 20px;
-}
-.hero h1 {
-    font-size: 28px;
-    color: gold;
-}
-@media(min-width:768px){
-  .hero h1 { font-size: 36px; }
+/* GOLD FRAME */
+.frame {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 3px solid #c9a34a;
+    border-radius: 20px;
+    pointer-events: none;
+    z-index: 1;
 }
 
-/* NAMES */
+/* MAIN CONTENT */
+.container {
+    position: relative;
+    z-index: 2;
+    padding: 40px 20px;
+}
+
+/* HEADER */
+h1 {
+    font-family: 'Cinzel', serif;
+    color: #b68b2c;
+    font-size: 28px;
+}
+
 .names {
     font-family: 'Cinzel', serif;
-    font-size: 28px;
-    color: #ffd700;
-    letter-spacing: 2px;
-    margin: 15px 0;
+    font-size: 30px;
+    color: #b68b2c;
+    margin: 10px 0;
 }
 
 /* CARD */
 .card {
-    background: rgba(0,0,0,0.65);
-    border: 1px solid gold;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid #c9a34a;
     border-radius: 20px;
     padding: 20px;
     margin: 20px;
-    box-shadow: 0 0 25px rgba(255,215,0,0.3);
-    transition: 0.5s;
-}
-.card:hover {
-    transform: scale(1.03);
+    backdrop-filter: blur(5px);
 }
 
 /* BUTTON */
 .button {
     display: inline-block;
     margin: 10px;
-    padding: 12px 22px;
-    border-radius: 30px;
-    background: gold;
-    color: black;
-    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: #c9a34a;
+    color: white;
     text-decoration: none;
-    border: none;
+    font-weight: bold;
 }
 
 /* COUNTDOWN */
@@ -74,110 +83,57 @@ body {
     margin-top: 15px;
 }
 #countdown div {
-    background: black;
+    background: white;
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid gold;
+    border: 1px solid #c9a34a;
 }
 
-/* GALLERY */
-.gallery img {
-    width: 45%;
-    margin: 5px;
-    border-radius: 12px;
+/* COUPLE IMAGE POSITION */
+.couple {
+    width: 250px;
+    margin-top: 20px;
 }
 
-/* POPUP */
-#welcome {
-    position: fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:black;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    z-index:9999;
-}
 </style>
 </head>
 
 <body>
 
-<!-- ENTRY POPUP -->
-<div id="welcome">
-  <h2 style="color:gold;">Welcome 💍</h2>
-  <button onclick="enterSite()" class="button">Enter Invitation</button>
+<div class="frame"></div>
+
+<div class="container">
+
+<h1>💍 Engagement Invitation 💍</h1>
+
+<div class="names">Shrayansh ❤️ Payal</div>
+
+<p>We invite you to celebrate our special day</p>
+
+<p><b>📅 04 May 2026</b></p>
+
+<div class="card">
+
+<p>📍 Venue: Hotel GK Jain</p>
+
+<a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6?g_st=ac" target="_blank">
+📍 View Location
+</a>
+
+<div id="countdown"></div>
+
+<a class="button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Shrayansh%20%26%20Payal%20Engagement&dates=20260504T120000Z/20260504T150000Z">
+📅 Add to Calendar
+</a>
+
 </div>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>💍 Engagement Invitation 💍</h1>
-  <div class="names">Shrayansh ❤️ Payal</div>
-  <p>Are Getting Engaged</p>
-  <p>04 May 2026</p>
-</section>
+<!-- COUPLE IMAGE (LIKE YOUR CARD) -->
+<img src="couple.png" class="couple">
 
-<!-- MAIN CARD -->
-<div class="card">
-    <p>We invite you to celebrate our special day</p>
-
-    <p>📍 Venue: Hotel GK Jain</p>
-
-    <a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6?g_st=ac" target="_blank">
-        📍 View Location
-    </a>
-
-    <div id="countdown"></div>
-
-    <br>
-
-    <a class="button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Shrayansh%20%26%20Payal%20Engagement&dates=20260504T120000Z/20260504T150000Z">
-        📅 Add to Calendar
-    </a>
-
-    <br>
-
-    <button onclick="toggleMusic()" class="button">🎵 Music</button>
 </div>
-
-<!-- COUPLE IMAGE 
-<div class="card">
-    <h2 style="color:gold;">Our Moments 💕</h2>
-    <img src="yourphoto.jpg" style="width:100%;border-radius:20px;margin-top:15px;">
-</div>
-
-<!-- GALLERY
-<div class="card">
-    <div class="gallery">
-        <img src="img1.jpg">
-        <img src="img2.jpg">
-    </div>
-</div> -->
-
-<!-- MUSIC -->
-<audio id="music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<!-- CONFETTI (FIXED LIGHT VERSION) -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
-// ENTER BUTTON FIX
-function enterSite(){
-  document.getElementById("welcome").style.display = "none";
-}
-
-// MUSIC CONTROL
-function toggleMusic(){
-  let music = document.getElementById("music");
-  if(music.paused){
-    music.play();
-  } else {
-    music.pause();
-  }
-}
 
 // COUNTDOWN
 var countDownDate = new Date("May 4, 2026 18:00:00").getTime();
@@ -197,15 +153,6 @@ setInterval(function() {
    <div>${m}<br>Min</div>
    <div>${s}<br>Sec</div>`;
 }, 1000);
-
-// LIGHT CONFETTI (NOT OVERPOWERING)
-setInterval(() => {
-  confetti({
-    particleCount: 10,
-    spread: 50,
-    origin: { y: 0.6 }
-  });
-}, 4000);
 
 </script>
 
