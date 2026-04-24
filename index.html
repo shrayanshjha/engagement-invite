@@ -9,6 +9,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
+    .name-block {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.name {
+    font-family: 'Cinzel', serif;
+    font-size: 34px;
+    color: #b68b2c;
+    animation: fadeUp 2s ease;
+}
+
+.heart {
+    font-size: 28px;
+    margin: 8px 0;
+    animation: heartbeat 1s infinite;
+}
+
+/* Heart animation */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    40% { transform: scale(0.9); }
+    60% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Smooth entry */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    .heart {
+    color: #e63946;
+    text-shadow: 0 0 10px #ff6b6b;
+    }
+    
     /* BASE FLORAL */
 .floral {
     position: fixed;
@@ -139,9 +182,11 @@ body {
 /* COUPLE IMAGE */
 .couple {
     position: fixed;
-    bottom: 0;
-    right: 10px;
-    width: 220px;
+    bottom: -10px;
+    right: 0;
+    width: 65vw;
+    max-width: 340px;
+    z-index: 2;
 }
 
 /* FLOWER */
@@ -205,8 +250,13 @@ body {
 
 <div class="title">Engagement Invitation</div>
 
-<div class="names">Shrayansh ❤️ Payal</div>
-
+<!--<div class="names">Shrayansh ❤️ Payal</div>
+-->
+    <div class="name-block">
+  <div class="name">Shrayansh</div>
+  <div class="heart">❤️</div>
+  <div class="name">Payal</div>
+    </div>
 <div class="text">With love, we invite you to celebrate</div>
 
 <div class="text"><b> 04 May 2026 </b></div>
