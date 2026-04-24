@@ -1,1 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Shrayansh ❤️ Payal | Engagement</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #000000, #3b0000);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Floating animation */
+@keyframes float {
+    0% { transform: translateY(0px);}
+    50% { transform: translateY(-10px);}
+    100% { transform: translateY(0px);}
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    color: gold;
+    font-size: 34px;
+    animation: float 3s infinite;
+}
+
+.names {
+    font-size: 30px;
+    color: #ffd700;
+    margin: 20px 0;
+}
+
+.card {
+    background: rgba(0,0,0,0.65);
+    border: 1px solid gold;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 20px;
+    box-shadow: 0 0 25px rgba(255,215,0,0.4);
+}
+
+.countdown {
+    margin-top: 15px;
+    font-size: 20px;
+    color: gold;
+}
+
+.button {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 22px;
+    border-radius: 30px;
+    background: gold;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Gallery */
+.gallery img {
+    width: 45%;
+    margin: 5px;
+    border-radius: 12px;
+}
+
+/* Fade animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>💍 Royal Engagement 💍</h1>
+
+    <div class="card fade-in">
+        <div class="names">Shrayansh ❤️ Payal</div>
+
+        <p>We invite you to celebrate our special moment</p>
+
+        <p>📅 04 May 2026</p>
+        <p>📍 Venue: To be announced</p>
+
+        <div class="countdown" id="countdown"></div>
+
+        <a class="button" href="https://wa.me/?text=I%20will%20attend%20your%20engagement">RSVP 💬</a>
+        <a class="button" href="#">📍 Location</a>
+    </div>
+
+    <!-- Gallery -->
+    <div class="card fade-in">
+        <h2 style="color:gold;">Memories 💕</h2>
+        <div class="gallery">
+            <img src="img1.jpg">
+            <img src="img2.jpg">
+        </div>
+    </div>
+
+</div>
+
+<!-- Background Music -->
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Autoplay music on first tap
+document.body.addEventListener('click', function() {
+    document.getElementById("music").play();
+}, { once: true });
+
+// Countdown
+var countDownDate = new Date("May 4, 2026 18:00:00").getTime();
+
+setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+
+  var d = Math.floor(distance / (1000*60*60*24));
+  var h = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+  var m = Math.floor((distance % (1000*60*60))/(1000*60));
+  var s = Math.floor((distance % (1000*60))/1000);
+
+  document.getElementById("countdown").innerHTML =
+  "⏳ " + d + "d " + h + "h " + m + "m " + s + "s";
+}, 1000);
+
+// Scroll animation
+let elements = document.querySelectorAll('.fade-in');
+window.addEventListener('scroll', () => {
+    elements.forEach(el => {
+        let position = el.getBoundingClientRect().top;
+        let screen = window.innerHeight;
+        if(position < screen - 50){
+            el.classList.add('show');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
