@@ -9,6 +9,64 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
+    /* BASE FLORAL */
+.floral {
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* LEFT SIDE */
+.floral-left {
+    bottom: 20px;
+    left: 10px;
+}
+
+/* RIGHT SIDE */
+.floral-right {
+    top: 20px;
+    right: 10px;
+}
+
+/* FLOWER PETALS */
+.floral::before,
+.floral::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+/* BIG PETAL */
+.floral::before {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #f8c8dc, #f2a7c0);
+}
+
+/* SMALL PETAL */
+.floral::after {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #ffd6e8, #f8c8dc);
+    top: 30px;
+    left: 40px;
+}
+
+/* EXTRA BLOOM EFFECT */
+.floral-left {
+    box-shadow:
+        40px 20px 0 10px rgba(248, 200, 220, 0.4),
+        70px 60px 0 5px rgba(255, 200, 220, 0.3);
+}
+
+.floral-right {
+    box-shadow:
+        -40px 20px 0 10px rgba(248, 200, 220, 0.4),
+        -70px 60px 0 5px rgba(255, 200, 220, 0.3);
+}
 
 /* BACKGROUND */
 body {
@@ -134,6 +192,11 @@ body {
 </head>
 
 <body>
+    <!-- LEFT FLORAL -->
+<div class="floral floral-left"></div>
+
+<!-- RIGHT FLORAL -->
+<div class="floral floral-right"></div>
 
 <!-- FRAME -->
 <div class="frame1"></div>
