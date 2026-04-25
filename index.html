@@ -9,6 +9,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
+    #musicBtn {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    z-index: 50;
+
+    background: rgba(255,255,255,0.7);
+    border: 1px solid #c9a34a;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+
+    font-size: 20px;
+    cursor: pointer;
+
+    backdrop-filter: blur(4px);
+}
+
+#musicBtn:active {
+    transform: scale(0.9);
+}
     /* COUNTDOWN CONTAINER 
 .countdown-box {
     display: flex;
@@ -557,6 +578,22 @@ function createStars() {
 
 // Create once (not continuous)
 createStars();
+    const music = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
+
+// Start muted (important for mobile autoplay)
+music.muted = true;
+
+btn.addEventListener("click", () => {
+    if (music.muted) {
+        music.muted = false;
+        music.play();
+        btn.innerHTML = "🔊";
+    } else {
+        music.muted = true;
+        btn.innerHTML = "🔇";
+    }
+});
 </script>
     <audio id="bgMusic" autoplay loop>
   <source src="music.mp3" type="audio/mpeg">
