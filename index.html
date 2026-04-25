@@ -636,20 +636,197 @@ body {
     50% { transform: scale(1.08); opacity: 0.8; }
 }
 
-/
+    /* cinamatic css*/
+    #entryScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+    overflow: hidden;
+}
+
+/* DARK CINEMA OVERLAY */
+.cinema-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 40%, black 90%);
+    opacity: 0.8;
+}
+
+/* CARD */
+.card3d {
+    width: 260px;
+    height: 360px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.6s ease;
+    z-index: 2;
+}
+
+/* FACES */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    backface-visibility: hidden;
+}
+
+/* FRONT */
+.front {
+    background: linear-gradient(135deg, #c9a34a, #fff2c2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+/* INSIDE */
+.inside {
+    background: #fff;
+    transform: rotateY(180deg);
+}
+
+/* TEXT */
+.entry-text {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    color: #5a3e36;
+    text-align: center;
+    animation: glowPulse 2s infinite;
+}
+
+/* GLOW */
+@keyframes glowPulse {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* LIGHT SWEEP */
+.front::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+    transform: translateX(-100%);
+    animation: shineMove 3s infinite;
+}
+
+@keyframes shineMove {
+    to { transform: translateX(100%); }
+}
+
+/* OPEN */
+.open .card3d {
+    transform: rotateY(180deg) scale(1.2);
+}
+
+/* ZOOM EFFECT */
+.zoomOut {
+    animation: zoomReveal 1.5s ease forwards;
+}
+
+@keyframes zoomReveal {
+    from { transform: scale(1.3); filter: blur(8px); }
+    to { transform: scale(1); filter: blur(0); }
+}
+/* royal css*/
+    #entryScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #2b0f0f, #000);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* GOLD OVERLAY GLOW */
+.bolly-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,215,0,0.15), transparent 60%);
+}
+
+/* CARD */
+.bolly-card {
+    padding: 40px 30px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #c9a34a, #fff2c2);
+    box-shadow: 0 0 40px rgba(255,215,0,0.6);
+    text-align: center;
+    z-index: 2;
+
+    animation: floatCard 3s ease-in-out infinite;
+}
+
+/* FLOAT EFFECT */
+@keyframes floatCard {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* TEXT */
+.entry-text {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    color: #5a3e36;
+    text-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+.entry-text span {
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #8b5e3c;
+}
+
+/* GOLD PARTICLES */
+.gold-particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: gold;
+    opacity: 0.8;
+    animation: floatUp 4s linear infinite;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    to { transform: translateY(-10vh) scale(1); opacity: 1; }
+}
+
+/* FADE OUT */
+.fadeOut {
+    animation: fadeScreen 1.5s forwards;
+}
+
+@keyframes fadeScreen {
+    to { opacity: 0; }
+}
 </style>
 </head>
 
 <body>
     <div id="entryScreen">
-  <div class="card3d">
+  <div class="bolly-overlay"></div>
 
-    <div class="card-face front">
-      <div class="entry-text">Tap to Open 💌</div>
+  <div class="bolly-card">
+    <div class="entry-text">
+      💍 Engagement 💍<br>
+      <span>Tap to Enter</span>
     </div>
-
-    <div class="card-face inside"></div>
-
   </div>
     </div>
 <div id="sparkles"></div>
@@ -786,27 +963,42 @@ entry.addEventListener("click", () => {
     }, 1000);
 });
 );
-    const entry = document.getElementById("entryScreen");
+const entry = document.getElementById("entryScreen");
 const music = document.getElementById("bgMusic");
 
+// floating gold particles
+function createGoldParticles() {
+    for (let i = 0; i < 20; i++) {
+        const p = document.createElement("div");
+        p.classList.add("gold-particle");
+        p.style.left = Math.random() * window.innerWidth + "px";
+        p.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(p);
+
+        setTimeout(() => p.remove(), 6000);
+    }
+}
+
+setInterval(createGoldParticles, 1500);
+
+// click event
 entry.addEventListener("click", () => {
 
-    // start music
+    // play music
     music.play().catch(() => {});
 
-    // 3D flip
-    entry.classList.add("open");
+    // dramatic zoom
+    document.body.style.transform = "scale(1.1)";
+    document.body.style.transition = "transform 1s";
 
-    // fade out whole screen
-    setTimeout(() => {
-        entry.style.opacity = "0";
-        entry.style.transition = "opacity 1s";
-    }, 1000);
+    // fade out entry
+    entry.classList.add("fadeOut");
 
     // remove after animation
     setTimeout(() => {
         entry.style.display = "none";
-    }, 2000);
+        document.body.style.transform = "scale(1)";
+    }, 1500);
 });
 
     // Music toggle button
