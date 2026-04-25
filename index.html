@@ -9,315 +9,95 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
+
+/* COUNTDOWN BOX */
 .countdown-box {
     margin-top: 20px;
 }
-    .bolly-overlay {
-    pointer-events: none;
-    }
-    .bolly-card {
-    position: relative;
-    z-index: 5;
-    cursor: pointer;
-    }
-    #countdown {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 18px;
 
+#countdown {
+    display: inline-block;
+    padding: 10px 18px;
     font-family: 'Cinzel', serif;
     font-size: 18px;
-    letter-spacing: 1px;
-
     color: #b68b2c;
-
     background: rgba(255,255,255,0.7);
     border: 1px solid #c9a34a;
     border-radius: 30px;
-
     backdrop-filter: blur(6px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-
     animation: glowCount 2s infinite alternate;
 }
 
-/* subtle glowing effect */
 @keyframes glowCount {
     from { box-shadow: 0 0 5px rgba(201,163,74,0.4); }
     to { box-shadow: 0 0 18px rgba(201,163,74,0.8); }
 }
 
-    #musicBtn {
+/* MUSIC BUTTON */
+#musicBtn {
     position: fixed;
     bottom: 15px;
     left: 15px;
     z-index: 10000;
-
     background: rgba(255,255,255,0.7);
     border: 1px solid #c9a34a;
     border-radius: 50%;
     width: 45px;
     height: 45px;
-
     font-size: 20px;
     cursor: pointer;
-
-    backdrop-filter: blur(4px);
 }
 
-#musicBtn:active {
-    transform: scale(0.9);
-}
-
-/* NUMBER */
-.count-num {
-    font-size: 20px;
-    font-weight: bold;
-    color: #b68b2c;
-}
-
-/* LABEL */
-.count-label {
-    font-size: 11px;
-    color: #5a3e36;
-}
-    .count-num {
-    text-shadow: 0 0 6px rgba(201,163,74,0.4);
-    }
-
-.sparkle {
-    position: fixed;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.8;
-    animation: twinkle 2s infinite ease-in-out alternate;
-}
-
-/* GOLD */
-.sparkle.gold {
-    background: radial-gradient(circle, #ffd700, #c9a34a);
-    box-shadow: 0 0 6px #ffd700;
-}
-
-/* SILVER */
-.sparkle.silver {
-    background: radial-gradient(circle, #ffffff, #c0c0c0);
-    box-shadow: 0 0 5px #ffffff;
-}
-
-/* TWINKLE ANIMATION */
-@keyframes twinkle {
-    0% { opacity: 0.3; transform: scale(0.8); }
-    50% { opacity: 1; transform: scale(1.2); }
-    100% { opacity: 0.5; transform: scale(1); }
-}
-    .button:hover {
-    box-shadow: 0 0 15px rgba(201,163,74,0.7);
-    transform: scale(1.05);
-    }
-    .names, .title {
-    text-shadow: 0 0 8px rgba(255,255,255,0.5);
-    }
-    .name-block {
-    text-align: center;
-    margin: 20px 0;
-}
-    .name-block {
-    position: relative;
-    z-index: 5;
-    }
-.title {
-    background: linear-gradient(90deg, #c9a34a, #fff2c2, #c9a34a);
-    background-size: 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 3s infinite linear;
-}
-
-@keyframes shine {
-    0% { background-position: 0%; }
-    100% { background-position: 200%; }
-}
-.name {
-    font-family: 'Cinzel', serif;
-    font-size: 34px;
-    color: #b68b2c;
-    animation: fadeUp 2s ease;
-}
-
-.heart {
-    display: inline-block;   /* important */
-    font-size: 28px;
-    margin: 8px 0;
-    will-change: transform;
-    animation: heartbeat 1s infinite;
-
-    transform-origin: center; /* prevents shifting */
-}
-    .frame1, .frame2 {
-    position: fixed;
-    transform: none !important;
-    }
-
-/* Heart animation */
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    25% { transform: scale(1.2); }
-    40% { transform: scale(0.9); }
-    60% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-/* Smooth entry */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-    .heart {
-    color: #e63946;
-    text-shadow: 0 0 10px #ff6b6b;
-    }
-    .heart {
-    animation: heartbeat 1.2s infinite, glowHeart 2s infinite alternate;
-}
-
-@keyframes glowHeart {
-    from { filter: drop-shadow(0 0 5px red); }
-    to { filter: drop-shadow(0 0 15px red); }
-}
-    
-    /* BASE FLORAL */
-.floral {
-    position: fixed;
-    width: 120px;
-    height: 120px;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* LEFT SIDE */
-.floral-left {
-    bottom: 20px;
-    left: 10px;
-}
-
-/* RIGHT SIDE */
-.floral-right {
-    top: 20px;
-    right: 10px;
-}
-
-/* FLOWER PETALS */
-.floral::before,
-.floral::after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.6;
-}
-
-/* BIG PETAL */
-.floral::before {
-    width: 80px;
-    height: 80px;
-    background: radial-gradient(circle, #f8c8dc, #f2a7c0);
-}
-
-/* SMALL PETAL */
-.floral::after {
-    width: 50px;
-    height: 50px;
-    background: radial-gradient(circle, #ffd6e8, #f8c8dc);
-    top: 30px;
-    left: 40px;
-}
-
-/* EXTRA BLOOM EFFECT */
-.floral-left {
-    box-shadow:
-        40px 20px 0 10px rgba(248, 200, 220, 0.4),
-        70px 60px 0 5px rgba(255, 200, 220, 0.3);
-}
-
-.floral-right {
-    box-shadow:
-        -40px 20px 0 10px rgba(248, 200, 220, 0.4),
-        -70px 60px 0 5px rgba(255, 200, 220, 0.3);
-}
-
-/* BACKGROUND */
+/* BASE */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background: #f5e6dc;
-    color: #5a3e36;
-    overflow-x: hidden;
+    text-align: center;
 }
 
-/* DOUBLE FRAME */
-.frame1, .frame2 {
-    position: fixed;
-    border-radius: 20px;
-    pointer-events: none;
-}
+/* FRAME */
 .frame1 {
+    position: fixed;
     top: 15px; left: 15px; right: 15px; bottom: 15px;
     border: 2px solid #c9a34a;
 }
 .frame2 {
+    position: fixed;
     top: 25px; left: 25px; right: 25px; bottom: 25px;
     border: 1px solid #c9a34a;
 }
 
 /* CONTENT */
 .container {
-    text-align: center;
     padding: 80px 20px;
-    animation: fadeIn 2s ease;
-    position: relative;
-    z-index: 5;
 }
 
-/* TEXT STYLES */
+/* TEXT */
 .title {
     font-family: 'Cinzel', serif;
     font-size: 26px;
     color: #b68b2c;
 }
 
-.names {
+.name {
     font-family: 'Cinzel', serif;
     font-size: 34px;
     color: #b68b2c;
-    margin: 10px 0;
-    animation: glow 2s infinite alternate;
 }
 
-.text {
-    margin: 10px 0;
+.heart {
+    font-size: 28px;
+    color: red;
+    animation: heartbeat 1.2s infinite;
 }
-    
-.petal {
-    background: #f8c8dc;
-    opacity: 0.5;
-    border-radius: 50%;
-    filter: blur(1px);
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
-.sparkle,
-.petal,
-.floral {
-    pointer-events: none;
-}
-/* BUTTON */
+
 .button {
     display: inline-block;
     margin: 10px;
@@ -326,276 +106,75 @@ body {
     background: #c9a34a;
     color: white;
     text-decoration: none;
-    font-weight: bold;
-    position: relative;
-    z-index: 20;
-
-}
-    /*
-#countdown {
-    font-family: 'Cinzel', serif;  
-    font-size: 18px;
-    color: #b68b2c;                  
-    letter-spacing: 1px;
-}
-/* COUNTDOWN */
-
-
-/* COUPLE IMAGE */
-.couple {
-    position: fixed;
-    bottom: -10px;
-    right: 0;
-    width: 65vw;
-    max-width: 340px;
-    z-index: 10;
-}
-.couple {
-    animation: fadeInLeft 2s ease 1s forwards;
-    opacity: 0;
-}
-    @keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-40px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-    }
-    }
-    
-    .button:hover {
-    box-shadow: 0 0 15px rgba(201,163,74,0.7);
-    transform: scale(1.05);
 }
 
-/* FLOWER */
-.flower {
-    position: fixed;
-    bottom: 20px;
-    left: 10px;
-    width: 120px;
-    opacity: 0.5;
-}
-
-/* RING */
-.ring {
-    position: fixed;
-    top: 30px;
-    left: 30px;
-    font-size: 30px;
-}
-
-/* ANIMATIONS */
-@keyframes fadeIn {
-    from {opacity:0; transform:translateY(20px);}
-    to {opacity:1; transform:translateY(0);}
-}
-@keyframes glow {
-    from {text-shadow: 0 0 5px gold;}
-    to {text-shadow: 0 0 20px gold;}
-}
-
-/* PETALS */
-.petal {
-    position: fixed;
-    top: -10px;
-    width: 10px;
-    height: 10px;
-    background: pink;
-    border-radius: 50%;
-    opacity: 0.7;
-    animation: fall linear infinite;
-}
-@keyframes fall {
-    to {
-        transform: translateY(100vh);
-    }
-}
-    .tagline {
-    font-family: 'Cinzel', serif;
-    font-size: 12px;
-    margin-top: 8px;
-    text-align: center;
-    line-height: 1.6;
-
-    /* Silver metallic */
-    background: linear-gradient(90deg, #8f8f8f, #d9d9d9, #7a7a7a);
-    background-size: 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    animation: silverShine 4s linear infinite;
-}
-
-/* Make & special */
-.amp {
-    font-size: 15px;
-    margin: 4px 0;
-}
-@keyframes silverShine {
-    0% { background-position: 0%; }
-    100% { background-position: 200%; }
-    animation: silverShine 5s linear infinite;
-}
-    .amp {
-    font-family: serif;
-    font-style: italic;
-    text-shadow: 0 0 6px rgba(255,255,255,0.6);
-    }
-
-
-
-/* royal css*/
-    #entryScreen {
+/* ENTRY SCREEN */
+#entryScreen {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, #2b0f0f, #000);
+    background: black;
     z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
-/* GOLD OVERLAY GLOW */
-.bolly-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255,215,0,0.15), transparent 60%);
-}
-
-/* CARD */
 .bolly-card {
-    padding: 40px 30px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #c9a34a, #fff2c2);
-    box-shadow: 0 0 40px rgba(255,215,0,0.6);
-    text-align: center;
-    z-index: 2;
-
-    animation: floatCard 3s ease-in-out infinite;
-}
-
-/* FLOAT EFFECT */
-@keyframes floatCard {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* TEXT */
-.entry-text {
-    font-family: 'Cinzel', serif;
-    font-size: 22px;
-    color: #5a3e36;
-    text-shadow: 0 0 10px rgba(255,255,255,0.6);
-}
-
-.entry-text span {
-    display: block;
-    margin-top: 10px;
-    font-size: 16px;
-    color: #8b5e3c;
-}
-
-/* GOLD PARTICLES */
-.gold-particle {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
+    padding: 30px;
     background: gold;
-    opacity: 0.8;
-    animation: floatUp 4s linear infinite;
+    border-radius: 15px;
+    cursor: pointer;
 }
 
-@keyframes floatUp {
-    from { transform: translateY(100vh) scale(0.5); opacity: 0; }
-    to { transform: translateY(-10vh) scale(1); opacity: 1; }
-}
-
-/* FADE OUT */
+/* FADE */
 .fadeOut {
-    animation: fadeScreen 1.5s forwards;
+    animation: fade 1.5s forwards;
 }
-
-@keyframes fadeScreen {
+@keyframes fade {
     to { opacity: 0; }
 }
+
 </style>
 </head>
 
 <body>
-    <div id="entryScreen">
-  <div class="bolly-overlay"></div>
 
-  <div class="bolly-card">
-    <div class="entry-text">
-       Engagement 💍 <br>
-      <span>Tap to Open</span>
-    </div>
-  </div>
-    </div>
-<div id="sparkles"></div>
-<!-- FRAME -->
+<!-- ENTRY -->
+<div id="entryScreen">
+  <div class="bolly-card">Tap to Open 💍</div>
+</div>
+
 <div class="frame1"></div>
 <div class="frame2"></div>
 
-<!-- RING -->
-<div class="ring">💍💍</div>
-
-<!-- MAIN CONTENT -->
 <div class="container">
 
 <div class="title">Engagement Invitation</div>
 
-<!--<div class="names">Shrayansh ❤️ Payal</div>
--->
-    <div class="name-block">
-  <div class="name">Shrayansh</div>
-  <div class="heart">❤️</div>
-  <div class="name">Payal</div>
-    </div>
-    <div class="tagline">
-  <div>Celebrate love, laughter</div>
-  <div class="amp">&</div>
-  <div>happily ever after</div>
-    </div>
-<div class="text">With love, we invite you to celebrate</div>
+<div class="name">Shrayansh</div>
+<div class="heart">❤️</div>
+<div class="name">Payal</div>
 
+<div>04 May 2026</div>
+<div>📍 Hotel GK Jain</div>
 
-<div class="text"><b> 04 May 2026 </b></div>
-
-<div class="text">📍 Hotel GK Jain </div>
-
-    <a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6" target="_blank">
+<a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6" target="_blank">
 Get Directions 🚗
-    </a>
+</a>
+
 <div id="countdown" class="countdown-box"></div>
-<br>
-<!--
-<a class="button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Engagement&dates=20260504T073000Z/20260504T103000Z">
-Add to Calendar
-</a> -->
 
-
-    
 </div>
 
-<!-- IMAGES -->
-<img src="couple.png" class="couple">
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-    
-<!-- LEFT FLORAL -->
-<div class="floral floral-left"></div>
-
-<!-- RIGHT FLORAL -->
-<div class="floral floral-right"></div>
+<button id="musicBtn">🔇</button>
 
 <script>
+
 /* COUNTDOWN */
 var countDownDate = new Date("May 4, 2026 13:00:00").getTime();
 
@@ -608,82 +187,27 @@ setInterval(function() {
   var m = Math.floor((distance % (1000*60*60))/(1000*60));
 
   document.getElementById("countdown").innerHTML =
-  "⏳ " + d + " days " + h + " hrs " + m + " min left";
+  "⏳ " + d + " Days | " + h + " Hours | " + m + " Min";
 }, 1000);
 
-
-/* PETALS */
-function createPetal() {
-  const petal = document.createElement("div");
-  petal.classList.add("petal");
-  petal.style.left = Math.random() * window.innerWidth + "px";
-  petal.style.animationDuration = (5 + Math.random() * 5) + "s";
-  document.body.appendChild(petal);
-
-  setTimeout(() => petal.remove(), 10000);
-}
-setInterval(createPetal, 500);
-
-
-/* STARS */
-function createStars() {
-  for (let i = 0; i < 40; i++) {
-    const s = document.createElement("div");
-    s.classList.add("sparkle");
-
-    s.classList.add(Math.random() > 0.5 ? "gold" : "silver");
-
-    s.style.left = Math.random() * window.innerWidth + "px";
-    s.style.top = Math.random() * window.innerHeight + "px";
-
-    s.style.animationDuration = (1.5 + Math.random() * 2) + "s";
-
-    document.body.appendChild(s);
-  }
-}
-createStars();
-
-
-/* ENTRY + MUSIC */
-    
+/* ELEMENTS */
 const entry = document.getElementById("entryScreen");
 const music = document.getElementById("bgMusic");
 const btn = document.getElementById("musicBtn");
-entry.addEventListener("click", openInvite);
-// Floating gold particles
-function createGoldParticles() {
-  for (let i = 0; i < 20; i++) {
-    const p = document.createElement("div");
-    p.classList.add("gold-particle");
-    p.style.left = Math.random() * window.innerWidth + "px";
-    p.style.animationDuration = (3 + Math.random() * 3) + "s";
-    document.body.appendChild(p);
 
-    setTimeout(() => p.remove(), 6000);
-  }
-}
-setInterval(createGoldParticles, 1500);
-
-
-// TAP TO enter
+/* OPEN INVITE */
 document.querySelector(".bolly-card").addEventListener("click", openInvite);
 
 function openInvite() {
-  music.play().catch(() => {});
-
-  document.body.style.transform = "scale(1.1)";
-  document.body.style.transition = "transform 1s";
-
+  music.play().catch(()=>{});
   entry.classList.add("fadeOut");
 
   setTimeout(() => {
     entry.style.display = "none";
-    document.body.style.transform = "scale(1)";
   }, 1500);
 }
 
-
-// MUSIC BUTTON
+/* MUSIC BUTTON */
 btn.addEventListener("click", () => {
   if (music.paused) {
     music.play();
@@ -693,12 +217,8 @@ btn.addEventListener("click", () => {
     btn.innerHTML = "🔇";
   }
 });
-    
+
 </script>
-    <audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
-    </audio>
-<button id="musicBtn">🔇</button>
 
 </body>
 </html>
