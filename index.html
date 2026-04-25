@@ -571,17 +571,84 @@ body {
 .open .right {
     transform: rotateY(90deg);
 }
+
+
+    /*****************/
+    #entryScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #f5e6dc, #e8d5c4);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px; /* 3D depth */
+}
+
+/* CARD CONTAINER */
+.card3d {
+    width: 260px;
+    height: 360px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.5s ease;
+}
+
+/* CARD FACES */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    backface-visibility: hidden;
+}
+
+/* FRONT SIDE */
+.front {
+    background: linear-gradient(135deg, #c9a34a, #f5e6dc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* INSIDE */
+.inside {
+    background: linear-gradient(135deg, #fff, #f8efe7);
+    transform: rotateY(180deg);
+}
+
+/* TEXT */
+.entry-text {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+
+    text-shadow: 0 0 10px rgba(255,255,255,0.6);
+    animation: pulseGlow 2s infinite;
+}
+
+/* GLOW */
+@keyframes pulseGlow {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.08); opacity: 0.8; }
+}
+
+/
 </style>
 </head>
 
 <body>
     <div id="entryScreen">
-  <div class="card-wrapper">
-    
-    <div class="card left"></div>
-    <div class="card right"></div>
+  <div class="card3d">
 
-    <div class="entry-text">Tap to Open 💌</div>
+    <div class="card-face front">
+      <div class="entry-text">Tap to Open 💌</div>
+    </div>
+
+    <div class="card-face inside"></div>
 
   </div>
     </div>
@@ -719,24 +786,27 @@ entry.addEventListener("click", () => {
     }, 1000);
 });
 );
-    document.addEventListener("DOMContentLoaded", function () {
-
     const entry = document.getElementById("entryScreen");
 const music = document.getElementById("bgMusic");
 
 entry.addEventListener("click", () => {
 
-    // play music
+    // start music
     music.play().catch(() => {});
 
-    // add open class
+    // 3D flip
     entry.classList.add("open");
+
+    // fade out whole screen
+    setTimeout(() => {
+        entry.style.opacity = "0";
+        entry.style.transition = "opacity 1s";
+    }, 1000);
 
     // remove after animation
     setTimeout(() => {
         entry.style.display = "none";
-    }, 1300);
-
+    }, 2000);
 });
 
     // Music toggle button
