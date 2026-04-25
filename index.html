@@ -10,13 +10,52 @@
 
 <style>
 
-/* BODY */
-body {
+/* FULL HEIGHT FIX */
+html, body {
+    height: 100%;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
     background: #f5e6dc;
-    text-align: center;
+    font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
+}
+
+/* ENTRY SCREEN */
+#entryScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #2b0f0f, #000);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bolly-card {
+    padding: 40px 30px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #c9a34a, #fff2c2);
+    box-shadow: 0 0 40px rgba(255,215,0,0.6);
+    text-align: center;
+    cursor: pointer;
+    animation: floatCard 3s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.fadeOut {
+    animation: fade 1.5s forwards;
+}
+
+@keyframes fade {
+    to { opacity: 0; }
 }
 
 /* FRAME */
@@ -28,7 +67,14 @@ body {
 .frame1 { top: 15px; left: 15px; right: 15px; bottom: 15px; border: 2px solid #c9a34a; }
 .frame2 { top: 25px; left: 25px; right: 25px; bottom: 25px; border: 1px solid #c9a34a; }
 
-/* TITLE EFFECT */
+/* CONTAINER */
+.container {
+    text-align: center;
+    min-height: 100vh;
+    padding: 80px 20px 140px;
+}
+
+/* TITLE */
 .title {
     font-family: 'Cinzel', serif;
     font-size: 28px;
@@ -50,11 +96,10 @@ body {
     color: #b68b2c;
 }
 
-/* HEART (GLOW + BEAT) */
+/* HEART */
 .heart {
     font-size: 28px;
     color: #e63946;
-    display: inline-block;
     animation: heartbeat 1.2s infinite, glowHeart 2s infinite alternate;
 }
 @keyframes heartbeat {
@@ -70,24 +115,19 @@ body {
 /* TAGLINE */
 .tagline {
     font-family: 'Cinzel', serif;
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 10px;
     background: linear-gradient(90deg, #8f8f8f, #d9d9d9, #7a7a7a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: silverShine 4s linear infinite;
-}
-@keyframes silverShine {
-    0% { background-position: 0%; }
-    100% { background-position: 200%; }
 }
 
 /* BUTTON */
 .button {
     display: inline-block;
-    margin: 10px;
-    padding: 10px 22px;
-    border-radius: 25px;
+    margin: 15px;
+    padding: 12px 25px;
+    border-radius: 30px;
     background: #c9a34a;
     color: white;
     text-decoration: none;
@@ -97,7 +137,7 @@ body {
 /* COUNTDOWN */
 #countdown {
     margin-top: 20px;
-    padding: 10px 18px;
+    padding: 12px 20px;
     display: inline-block;
     font-family: 'Cinzel', serif;
     color: #b68b2c;
@@ -111,19 +151,14 @@ body {
     to { box-shadow: 0 0 18px rgba(201,163,74,0.8); }
 }
 
-/* COUPLE IMAGE */
+/* COUPLE */
 .couple {
     position: fixed;
-    bottom: -10px;
+    bottom: 0;
     right: 0;
     width: 65vw;
-    max-width: 340px;
-    z-index: 10;
-    animation: fadeInLeft 2s ease forwards;
-}
-@keyframes fadeInLeft {
-    from { opacity: 0; transform: translateX(-40px); }
-    to { opacity: 1; transform: translateX(0); }
+    max-width: 320px;
+    z-index: 5;
 }
 
 /* FLORAL */
@@ -153,33 +188,13 @@ body {
     left: 40px;
 }
 
-/* RINGS */
+/* RING */
 .ring {
     position: fixed;
     top: 20px;
     left: 20px;
     font-size: 28px;
 }
-
-/* ENTRY */
-#entryScreen {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: black;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.bolly-card {
-    padding: 30px;
-    background: gold;
-    border-radius: 15px;
-    cursor: pointer;
-}
-.fadeOut { animation: fade 1.5s forwards; }
-@keyframes fade { to { opacity: 0; } }
 
 /* MUSIC BUTTON */
 #musicBtn {
@@ -189,7 +204,7 @@ body {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background: white;
+    border: none;
 }
 
 </style>
@@ -197,6 +212,7 @@ body {
 
 <body>
 
+<!-- ENTRY -->
 <div id="entryScreen">
   <div class="bolly-card">Tap to Open 💍</div>
 </div>
@@ -204,7 +220,6 @@ body {
 <div class="frame1"></div>
 <div class="frame2"></div>
 
-<!-- RINGS -->
 <div class="ring">💍💍</div>
 
 <div class="container">
@@ -219,12 +234,14 @@ body {
 Celebrate love, laughter <br> & happily ever after
 </div>
 
-<div>04 May 2026</div>
+<br>
+
+<div><b>04 May 2026</b></div>
 <div>📍 Hotel GK Jain</div>
 
 <a class="button"
 href="https://www.google.com/maps/dir/?api=1&destination=Hotel+GK+Jain"
-target="_blank" rel="noopener noreferrer">
+target="_blank">
 Get Directions 🚗
 </a>
 
@@ -233,6 +250,7 @@ Get Directions 🚗
 </div>
 
 <img src="couple.png" class="couple">
+
 <div class="floral floral-left"></div>
 <div class="floral floral-right"></div>
 
@@ -243,6 +261,20 @@ Get Directions 🚗
 <button id="musicBtn">🔇</button>
 
 <script>
+
+/* ELEMENTS */
+const entry = document.getElementById("entryScreen");
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
+
+/* ENTRY CLICK FIXED */
+document.querySelector(".bolly-card").addEventListener("click", function() {
+    music.play().catch(()=>{});
+    entry.classList.add("fadeOut");
+    setTimeout(() => {
+        entry.style.display = "none";
+    }, 1500);
+});
 
 /* COUNTDOWN */
 var countDownDate = new Date("May 4, 2026 13:00:00").getTime();
@@ -259,19 +291,7 @@ setInterval(function() {
   "⏳ " + d + " Days | " + h + " Hours | " + m + " Min";
 }, 1000);
 
-/* ELEMENTS */
-const entry = document.getElementById("entryScreen");
-const music = document.getElementById("bgMusic");
-const btn = document.getElementById("musicBtn");
-
-/* ENTRY CLICK */
-document.querySelector(".bolly-card").addEventListener("click", () => {
-    music.play().catch(()=>{});
-    entry.classList.add("fadeOut");
-    setTimeout(()=> entry.style.display="none",1500);
-});
-
-/* MUSIC */
+/* MUSIC BUTTON */
 btn.addEventListener("click", () => {
   if (music.paused) {
     music.play();
