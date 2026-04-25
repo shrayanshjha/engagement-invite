@@ -9,6 +9,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
+    #musicBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;   /* better than left */
+    z-index: 99999;
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    border: 1px solid #c9a34a;
+    background: rgba(255,255,255,0.9);
+
+    font-size: 20px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    backdrop-filter: blur(6px);
+    }
 
 /* BODY */
 body {
@@ -310,8 +332,19 @@ document.addEventListener("click", function(e){
  document.body.appendChild(h);
  setTimeout(()=>h.remove(),2000);
 });
+const btn = document.getElementById("musicBtn");
+const music = document.getElementById("bgMusic");
 
+btn.addEventListener("click", () => {
+    if (music.paused) {
+        music.play();
+        btn.innerHTML = "🔊";
+    } else {
+        music.pause();
+        btn.innerHTML = "🔇";
+    }
+});
 </script>
-
+<button id="musicBtn">🔇</button>
 </body>
 </html>
