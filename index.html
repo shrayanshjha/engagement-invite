@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
+
     .bolly-overlay {
     pointer-events: none;
     }
@@ -29,7 +30,7 @@
     position: fixed;
     bottom: 15px;
     left: 15px;
-    z-index: 50;
+    z-index: 10000;
 
     background: rgba(255,255,255,0.7);
     border: 1px solid #c9a34a;
@@ -957,7 +958,6 @@ setInterval(createGoldParticles, 1500);
 
 // TAP TO enter
 document.querySelector(".bolly-card").addEventListener("click", openInvite);
-entry.addEventListener("click", openInvite);
 
 function openInvite() {
   music.play().catch(() => {});
