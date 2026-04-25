@@ -10,60 +10,26 @@
 
 <style>
 
-/* COUNTDOWN BOX */
-.countdown-box {
-    margin-top: 20px;
-}
-
-#countdown {
-    display: inline-block;
-    padding: 10px 18px;
-    font-family: 'Cinzel', serif;
-    font-size: 18px;
-    color: #b68b2c;
-    background: rgba(255,255,255,0.7);
-    border: 1px solid #c9a34a;
-    border-radius: 30px;
-    backdrop-filter: blur(6px);
-    animation: glowCount 2s infinite alternate;
-}
-
-@keyframes glowCount {
-    from { box-shadow: 0 0 5px rgba(201,163,74,0.4); }
-    to { box-shadow: 0 0 18px rgba(201,163,74,0.8); }
-}
-
-/* MUSIC BUTTON */
-#musicBtn {
-    position: fixed;
-    bottom: 15px;
-    left: 15px;
-    z-index: 10000;
-    background: rgba(255,255,255,0.7);
-    border: 1px solid #c9a34a;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-/* BASE */
+/* BODY */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background: #f5e6dc;
     text-align: center;
+    overflow-x: hidden;
 }
 
 /* FRAME */
-.frame1 {
+.frame1, .frame2 {
     position: fixed;
+    border-radius: 20px;
+    pointer-events: none;
+}
+.frame1 {
     top: 15px; left: 15px; right: 15px; bottom: 15px;
     border: 2px solid #c9a34a;
 }
 .frame2 {
-    position: fixed;
     top: 25px; left: 25px; right: 25px; bottom: 25px;
     border: 1px solid #c9a34a;
 }
@@ -71,6 +37,8 @@ body {
 /* CONTENT */
 .container {
     padding: 80px 20px;
+    position: relative;
+    z-index: 5;
 }
 
 /* TEXT */
@@ -98,6 +66,7 @@ body {
     100% { transform: scale(1); }
 }
 
+/* BUTTON */
 .button {
     display: inline-block;
     margin: 10px;
@@ -106,6 +75,90 @@ body {
     background: #c9a34a;
     color: white;
     text-decoration: none;
+    font-weight: bold;
+}
+
+/* COUNTDOWN */
+#countdown {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 18px;
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    color: #b68b2c;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid #c9a34a;
+    border-radius: 30px;
+    backdrop-filter: blur(6px);
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 5px rgba(201,163,74,0.4); }
+    to { box-shadow: 0 0 18px rgba(201,163,74,0.8); }
+}
+
+/* COUPLE IMAGE */
+.couple {
+    position: fixed;
+    bottom: -10px;
+    right: 0;
+    width: 65vw;
+    max-width: 340px;
+    z-index: 10;
+    animation: fadeInLeft 2s ease 1s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* FLORAL */
+.floral {
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    z-index: 0;
+}
+
+.floral-left {
+    bottom: 20px;
+    left: 10px;
+}
+
+.floral-right {
+    top: 20px;
+    right: 10px;
+}
+
+.floral::before,
+.floral::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.floral::before {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #f8c8dc, #f2a7c0);
+}
+
+.floral::after {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #ffd6e8, #f8c8dc);
+    top: 30px;
+    left: 40px;
 }
 
 /* ENTRY SCREEN */
@@ -125,6 +178,20 @@ body {
     background: gold;
     border-radius: 15px;
     cursor: pointer;
+}
+
+/* MUSIC BUTTON */
+#musicBtn {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    z-index: 10000;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    font-size: 20px;
 }
 
 /* FADE */
@@ -159,14 +226,26 @@ body {
 <div>04 May 2026</div>
 <div>📍 Hotel GK Jain</div>
 
-<a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6" target="_blank">
+<!-- FIXED MAP BUTTON -->
+<a class="button"
+   href="https://www.google.com/maps/dir/?api=1&destination=Hotel+GK+Jain"
+   target="_blank"
+   rel="noopener noreferrer">
 Get Directions 🚗
 </a>
 
-<div id="countdown" class="countdown-box"></div>
+<div id="countdown"></div>
 
 </div>
 
+<!-- COUPLE IMAGE -->
+<img src="couple.png" class="couple">
+
+<!-- FLORAL -->
+<div class="floral floral-left"></div>
+<div class="floral floral-right"></div>
+
+<!-- AUDIO -->
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -196,18 +275,316 @@ const music = document.getElementById("bgMusic");
 const btn = document.getElementById("musicBtn");
 
 /* OPEN INVITE */
-document.querySelector(".bolly-card").addEventListener("click", openInvite);
+document.querySelector(".bolly-card").addEventListener("click", function() {
+    music.play().catch(()=>{});
+    entry.classList.add("fadeOut");
 
-function openInvite() {
-  music.play().catch(()=>{});
-  entry.classList.add("fadeOut");
+    setTimeout(() => {
+        entry.style.display = "none";
+    }, 1500);
+});
 
-  setTimeout(() => {
-    entry.style.display = "none";
-  }, 1500);
+/* MUSIC TOGGLE */
+btn.addEventListener("click", () => {
+  if (music.paused) {
+    music.play();
+    btn.innerHTML = "🔊";
+  } else {
+    music.pause();
+    btn.innerHTML = "🔇";
+  }
+});
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shrayansh ❤️ Payal | Engagement</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+
+/* BODY */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f5e6dc;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* FRAME */
+.frame1, .frame2 {
+    position: fixed;
+    border-radius: 20px;
+    pointer-events: none;
+}
+.frame1 {
+    top: 15px; left: 15px; right: 15px; bottom: 15px;
+    border: 2px solid #c9a34a;
+}
+.frame2 {
+    top: 25px; left: 25px; right: 25px; bottom: 25px;
+    border: 1px solid #c9a34a;
+}
+
+/* CONTENT */
+.container {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 5;
+}
+
+/* TEXT */
+.title {
+    font-family: 'Cinzel', serif;
+    font-size: 26px;
+    color: #b68b2c;
+}
+
+.name {
+    font-family: 'Cinzel', serif;
+    font-size: 34px;
+    color: #b68b2c;
+}
+
+.heart {
+    font-size: 28px;
+    color: red;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* BUTTON */
+.button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 22px;
+    border-radius: 25px;
+    background: #c9a34a;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* COUNTDOWN */
+#countdown {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 18px;
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    color: #b68b2c;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid #c9a34a;
+    border-radius: 30px;
+    backdrop-filter: blur(6px);
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 5px rgba(201,163,74,0.4); }
+    to { box-shadow: 0 0 18px rgba(201,163,74,0.8); }
+}
+
+/* COUPLE IMAGE */
+.couple {
+    position: fixed;
+    bottom: -10px;
+    right: 0;
+    width: 65vw;
+    max-width: 340px;
+    z-index: 10;
+    animation: fadeInLeft 2s ease 1s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* FLORAL */
+.floral {
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    z-index: 0;
+}
+
+.floral-left {
+    bottom: 20px;
+    left: 10px;
+}
+
+.floral-right {
+    top: 20px;
+    right: 10px;
+}
+
+.floral::before,
+.floral::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.floral::before {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #f8c8dc, #f2a7c0);
+}
+
+.floral::after {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #ffd6e8, #f8c8dc);
+    top: 30px;
+    left: 40px;
+}
+
+/* ENTRY SCREEN */
+#entryScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bolly-card {
+    padding: 30px;
+    background: gold;
+    border-radius: 15px;
+    cursor: pointer;
 }
 
 /* MUSIC BUTTON */
+#musicBtn {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    z-index: 10000;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    font-size: 20px;
+}
+
+/* FADE */
+.fadeOut {
+    animation: fade 1.5s forwards;
+}
+@keyframes fade {
+    to { opacity: 0; }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ENTRY -->
+<div id="entryScreen">
+  <div class="bolly-card">Tap to Open 💍</div>
+</div>
+
+<div class="frame1"></div>
+<div class="frame2"></div>
+
+<div class="container">
+
+<div class="title">Engagement Invitation</div>
+
+<div class="name">Shrayansh</div>
+<div class="heart">❤️</div>
+<div class="name">Payal</div>
+
+<div>04 May 2026</div>
+<div>📍 Hotel GK Jain</div>
+
+<!-- FIXED MAP BUTTON -->
+<a class="button"
+   href="https://www.google.com/maps/dir/?api=1&destination=Hotel+GK+Jain"
+   target="_blank"
+   rel="noopener noreferrer">
+Get Directions 🚗
+</a>
+
+<div id="countdown"></div>
+
+</div>
+
+<!-- COUPLE IMAGE -->
+<img src="couple.png" class="couple">
+
+<!-- FLORAL -->
+<div class="floral floral-left"></div>
+<div class="floral floral-right"></div>
+
+<!-- AUDIO -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn">🔇</button>
+
+<script>
+
+/* COUNTDOWN */
+var countDownDate = new Date("May 4, 2026 13:00:00").getTime();
+
+setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+
+  var d = Math.floor(distance / (1000*60*60*24));
+  var h = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+  var m = Math.floor((distance % (1000*60*60))/(1000*60));
+
+  document.getElementById("countdown").innerHTML =
+  "⏳ " + d + " Days | " + h + " Hours | " + m + " Min";
+}, 1000);
+
+/* ELEMENTS */
+const entry = document.getElementById("entryScreen");
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
+
+/* OPEN INVITE */
+document.querySelector(".bolly-card").addEventListener("click", function() {
+    music.play().catch(()=>{});
+    entry.classList.add("fadeOut");
+
+    setTimeout(() => {
+        entry.style.display = "none";
+    }, 1500);
+});
+
+/* MUSIC TOGGLE */
 btn.addEventListener("click", () => {
   if (music.paused) {
     music.play();
