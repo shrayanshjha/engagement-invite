@@ -9,6 +9,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
+    .sparkle,
+.petal,
+.floral {
+    pointer-events: none;
+}
+    #entryScreen {
+    z-index: 9999;
+    }
     #musicBtn {
     position: fixed;
     bottom: 15px;
@@ -635,20 +643,42 @@ entry.addEventListener("click", () => {
         entry.style.display = "none";
     }, 1000);
 });
+);
+    document.addEventListener("DOMContentLoaded", function () {
+
+    const entry = document.getElementById("entryScreen");
+    const music = document.getElementById("bgMusic");
     const btn = document.getElementById("musicBtn");
 
-btn.addEventListener("click", () => {
-    if (music.paused) {
-        music.play();
+    // Tap to enter
+    entry.addEventListener("click", () => {
+        music.play().catch(() => {});
+
+        entry.style.opacity = "0";
+        entry.style.transition = "opacity 1s";
+
+        setTimeout(() => {
+            entry.style.display = "none";
+        }, 1000);
+
         btn.innerHTML = "🔊";
-    } else {
-        music.pause();
-        btn.innerHTML = "🔇";
-    }
+    });
+
+    // Music toggle button
+    btn.addEventListener("click", () => {
+        if (music.paused) {
+            music.play();
+            btn.innerHTML = "🔊";
+        } else {
+            music.pause();
+            btn.innerHTML = "🔇";
+        }
+    });
+
 });
 </script>
     <audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio">
+  <source src="music.mp3" type="audio/mpeg">
     </audio>
 <button id="musicBtn">🔇</button>
 
