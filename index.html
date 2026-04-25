@@ -10,17 +10,12 @@
 
 <style>
 
-/* FULL HEIGHT FIX */
+/* RESET BLACK SPACE */
 html, body {
-    height: 100%;
     margin: 0;
-}
-
-body {
-    min-height: 100vh;
-    background: #f5e6dc;
-    font-family: 'Poppins', sans-serif;
+    padding: 0;
     overflow-x: hidden;
+    background: #f5e6dc;
 }
 
 /* ENTRY SCREEN */
@@ -36,26 +31,30 @@ body {
 }
 
 .bolly-card {
-    padding: 40px 30px;
+    padding: 40px;
     border-radius: 20px;
     background: linear-gradient(135deg, #c9a34a, #fff2c2);
     box-shadow: 0 0 40px rgba(255,215,0,0.6);
     text-align: center;
     cursor: pointer;
-    animation: floatCard 3s ease-in-out infinite;
+    animation: float 3s infinite ease-in-out;
 }
 
-@keyframes floatCard {
-    0%,100% { transform: translateY(0); }
+@keyframes float {
     50% { transform: translateY(-10px); }
 }
 
-.fadeOut {
-    animation: fade 1.5s forwards;
+.entry-text {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
 }
 
-@keyframes fade {
-    to { opacity: 0; }
+/* MAIN CONTAINER */
+.container {
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 5;
 }
 
 /* FRAME */
@@ -64,29 +63,22 @@ body {
     border-radius: 20px;
     pointer-events: none;
 }
-.frame1 { top: 15px; left: 15px; right: 15px; bottom: 15px; border: 2px solid #c9a34a; }
-.frame2 { top: 25px; left: 25px; right: 25px; bottom: 25px; border: 1px solid #c9a34a; }
-
-/* CONTAINER */
-.container {
-    text-align: center;
-    min-height: 100vh;
-    padding: 80px 20px 140px;
+.frame1 {
+    top: 15px; left: 15px; right: 15px; bottom: 15px;
+    border: 2px solid #c9a34a;
+}
+.frame2 {
+    top: 25px; left: 25px; right: 25px; bottom: 25px;
+    border: 1px solid #c9a34a;
 }
 
 /* TITLE */
 .title {
     font-family: 'Cinzel', serif;
     font-size: 28px;
-    background: linear-gradient(90deg, #c9a34a, #fff2c2, #c9a34a);
-    background-size: 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 3s linear infinite;
-}
-@keyframes shine {
-    0% { background-position: 0%; }
-    100% { background-position: 200%; }
+    color: #b68b2c;
+    z-index: 10;
+    position: relative;
 }
 
 /* NAMES */
@@ -96,30 +88,22 @@ body {
     color: #b68b2c;
 }
 
-/* HEART */
 .heart {
-    font-size: 28px;
-    color: #e63946;
-    animation: heartbeat 1.2s infinite, glowHeart 2s infinite alternate;
+    font-size: 30px;
+    color: red;
+    animation: heartbeat 1.2s infinite;
 }
+
 @keyframes heartbeat {
     0% { transform: scale(1); }
     50% { transform: scale(1.2); }
     100% { transform: scale(1); }
 }
-@keyframes glowHeart {
-    from { filter: drop-shadow(0 0 5px red); }
-    to { filter: drop-shadow(0 0 15px red); }
-}
 
-/* TAGLINE */
+/* QUOTE */
 .tagline {
-    font-family: 'Cinzel', serif;
     font-size: 13px;
-    margin-top: 10px;
-    background: linear-gradient(90deg, #8f8f8f, #d9d9d9, #7a7a7a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    margin: 10px 0;
 }
 
 /* BUTTON */
@@ -127,84 +111,67 @@ body {
     display: inline-block;
     margin: 15px;
     padding: 12px 25px;
-    border-radius: 30px;
+    border-radius: 25px;
     background: #c9a34a;
     color: white;
     text-decoration: none;
-    font-weight: bold;
 }
 
 /* COUNTDOWN */
 #countdown {
     margin-top: 20px;
-    padding: 12px 20px;
+    padding: 10px 18px;
     display: inline-block;
-    font-family: 'Cinzel', serif;
-    color: #b68b2c;
-    background: rgba(255,255,255,0.7);
-    border-radius: 30px;
+    border-radius: 25px;
     border: 1px solid #c9a34a;
-    animation: glow 2s infinite alternate;
-}
-@keyframes glow {
-    from { box-shadow: 0 0 5px rgba(201,163,74,0.4); }
-    to { box-shadow: 0 0 18px rgba(201,163,74,0.8); }
 }
 
-/* COUPLE */
+/* COUPLE IMAGE (FIXED - NO MOVE) */
 .couple {
     position: fixed;
     bottom: 0;
     right: 0;
-    width: 65vw;
+    width: 60vw;
     max-width: 320px;
-    z-index: 5;
+    z-index: 2;
+    pointer-events: none;
 }
 
-/* FLORAL */
+/* FLORAL (FIXED - NO MOVE) */
 .floral {
     position: fixed;
     width: 120px;
     height: 120px;
+    z-index: 1;
 }
+
 .floral-left { bottom: 20px; left: 10px; }
 .floral-right { top: 20px; right: 10px; }
 
-.floral::before, .floral::after {
+.floral::before {
     content: "";
     position: absolute;
-    border-radius: 50%;
-}
-.floral::before {
     width: 80px;
     height: 80px;
-    background: radial-gradient(circle, #f8c8dc, #f2a7c0);
-}
-.floral::after {
-    width: 50px;
-    height: 50px;
-    background: radial-gradient(circle, #ffd6e8, #f8c8dc);
-    top: 30px;
-    left: 40px;
-}
-
-/* RING */
-.ring {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    font-size: 28px;
-}
-
-/* MUSIC BUTTON */
-#musicBtn {
-    position: fixed;
-    bottom: 15px;
-    left: 15px;
-    width: 45px;
-    height: 45px;
+    background: pink;
     border-radius: 50%;
-    border: none;
+}
+
+/* FIREWORKS */
+.firework {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: gold;
+    border-radius: 50%;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+    to {
+        transform: scale(20);
+        opacity: 0;
+    }
 }
 
 </style>
@@ -214,14 +181,19 @@ body {
 
 <!-- ENTRY -->
 <div id="entryScreen">
-  <div class="bolly-card">Tap to Open 💍</div>
+    <div class="bolly-card" onclick="openInvite()">
+        <div class="entry-text">
+            Engagement 💍<br>
+            <span>Tap to Open</span>
+        </div>
+    </div>
 </div>
 
+<!-- FRAME -->
 <div class="frame1"></div>
 <div class="frame2"></div>
 
-<div class="ring">💍💍</div>
-
+<!-- MAIN -->
 <div class="container">
 
 <div class="title">Engagement Invitation</div>
@@ -231,17 +203,13 @@ body {
 <div class="name">Payal</div>
 
 <div class="tagline">
-Celebrate love, laughter <br> & happily ever after
+Celebrate love, laughter & happily ever after
 </div>
-
-<br>
 
 <div><b>04 May 2026</b></div>
 <div>📍 Hotel GK Jain</div>
 
-<a class="button"
-href="https://www.google.com/maps/dir/?api=1&destination=Hotel+GK+Jain"
-target="_blank">
+<a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6" target="_blank">
 Get Directions 🚗
 </a>
 
@@ -249,32 +217,12 @@ Get Directions 🚗
 
 </div>
 
+<!-- DECOR -->
 <img src="couple.png" class="couple">
-
 <div class="floral floral-left"></div>
 <div class="floral floral-right"></div>
 
-<audio id="bgMusic" loop>
-  <source src="music.mp3">
-</audio>
-
-<button id="musicBtn">🔇</button>
-
 <script>
-
-/* ELEMENTS */
-const entry = document.getElementById("entryScreen");
-const music = document.getElementById("bgMusic");
-const btn = document.getElementById("musicBtn");
-
-/* ENTRY CLICK FIXED */
-document.querySelector(".bolly-card").addEventListener("click", function() {
-    music.play().catch(()=>{});
-    entry.classList.add("fadeOut");
-    setTimeout(() => {
-        entry.style.display = "none";
-    }, 1500);
-});
 
 /* COUNTDOWN */
 var countDownDate = new Date("May 4, 2026 13:00:00").getTime();
@@ -291,16 +239,24 @@ setInterval(function() {
   "⏳ " + d + " Days | " + h + " Hours | " + m + " Min";
 }, 1000);
 
-/* MUSIC BUTTON */
-btn.addEventListener("click", () => {
-  if (music.paused) {
-    music.play();
-    btn.innerHTML = "🔊";
-  } else {
-    music.pause();
-    btn.innerHTML = "🔇";
-  }
-});
+/* OPEN INVITE */
+function openInvite() {
+    document.getElementById("entryScreen").style.display = "none";
+    fireworks();
+}
+
+/* FIREWORKS */
+function fireworks() {
+    for (let i = 0; i < 25; i++) {
+        let f = document.createElement("div");
+        f.className = "firework";
+        f.style.left = Math.random()*100 + "vw";
+        f.style.top = Math.random()*100 + "vh";
+        document.body.appendChild(f);
+
+        setTimeout(()=>f.remove(),1000);
+    }
+}
 
 </script>
 
