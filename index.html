@@ -884,9 +884,9 @@ Add to Calendar
 
 <!-- RIGHT FLORAL -->
 <div class="floral floral-right"></div>
-<script>
 
-/* COUNTDOWN (UPDATED 1 PM) */
+<script>
+/* COUNTDOWN */
 var countDownDate = new Date("May 4, 2026 13:00:00").getTime();
 
 setInterval(function() {
@@ -900,9 +900,9 @@ setInterval(function() {
   document.getElementById("countdown").innerHTML =
   "⏳ " + d + " days " + h + " hrs " + m + " min left";
 }, 1000);
-  
 
-/* PETAL ANIMATION */
+
+/* PETALS */
 function createPetal() {
   const petal = document.createElement("div");
   petal.classList.add("petal");
@@ -912,107 +912,79 @@ function createPetal() {
 
   setTimeout(() => petal.remove(), 10000);
 }
-
 setInterval(createPetal, 500);
 
-    function createSparkle() {
+
+/* STARS */
+function createStars() {
+  for (let i = 0; i < 40; i++) {
     const s = document.createElement("div");
     s.classList.add("sparkle");
+
     s.classList.add(Math.random() > 0.5 ? "gold" : "silver");
 
     s.style.left = Math.random() * window.innerWidth + "px";
-    s.style.top = "-10px";
-    s.style.animationDuration = (4 + Math.random() * 4) + "s";
+    s.style.top = Math.random() * window.innerHeight + "px";
+
+    s.style.animationDuration = (1.5 + Math.random() * 2) + "s";
 
     document.body.appendChild(s);
-    setTimeout(() => s.remove(), 8000);
+  }
 }
-
-// Balanced (important)
-//setInterval(createSparkle, 500);
-function createStars() {
-    for (let i = 0; i < 40; i++) {   // number of stars
-        const s = document.createElement("div");
-        s.classList.add("sparkle");
-
-        s.classList.add(Math.random() > 0.5 ? "gold" : "silver");
-
-        s.style.left = Math.random() * window.innerWidth + "px";
-        s.style.top = Math.random() * window.innerHeight + "px";
-
-        s.style.animationDuration = (1.5 + Math.random() * 2) + "s";
-
-        document.body.appendChild(s);
-    }
-}
-
-// Create once (not continuous)
 createStars();
+
+
+/* ENTRY + MUSIC */
 const entry = document.getElementById("entryScreen");
 const music = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
 
-entry.addEventListener("click", () => {
-    music.play();
-
-    // smooth fade out
-    entry.style.opacity = "0";
-    entry.style.transition = "opacity 1s";
-
-    setTimeout(() => {
-        entry.style.display = "none";
-    }, 1000);
-});
-);
-const entry = document.getElementById("entryScreen");
-const music = document.getElementById("bgMusic");
-
-// floating gold particles
+// Floating gold particles
 function createGoldParticles() {
-    for (let i = 0; i < 20; i++) {
-        const p = document.createElement("div");
-        p.classList.add("gold-particle");
-        p.style.left = Math.random() * window.innerWidth + "px";
-        p.style.animationDuration = (3 + Math.random() * 3) + "s";
-        document.body.appendChild(p);
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement("div");
+    p.classList.add("gold-particle");
+    p.style.left = Math.random() * window.innerWidth + "px";
+    p.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(p);
 
-        setTimeout(() => p.remove(), 6000);
-    }
+    setTimeout(() => p.remove(), 6000);
+  }
 }
-
 setInterval(createGoldParticles, 1500);
 
-// click event
+
+// TAP TO ENTER
 entry.addEventListener("click", () => {
 
-    // play music
-    music.play().catch(() => {});
+  // Play music (works on mobile)
+  music.play().catch(() => {});
 
-    // dramatic zoom
-    document.body.style.transform = "scale(1.1)";
-    document.body.style.transition = "transform 1s";
+  // Zoom effect
+  document.body.style.transform = "scale(1.1)";
+  document.body.style.transition = "transform 1s";
 
-    // fade out entry
-    entry.classList.add("fadeOut");
+  // Fade out
+  entry.classList.add("fadeOut");
 
-    // remove after animation
-    setTimeout(() => {
-        entry.style.display = "none";
-        document.body.style.transform = "scale(1)";
-    }, 1500);
+  setTimeout(() => {
+    entry.style.display = "none";
+    document.body.style.transform = "scale(1)";
+  }, 1500);
 });
 
-    // Music toggle button
-    btn.addEventListener("click", () => {
-        if (music.paused) {
-            music.play();
-            btn.innerHTML = "🔊";
-        } else {
-            music.pause();
-            btn.innerHTML = "🔇";
-        }
-    });
 
+// MUSIC BUTTON
+btn.addEventListener("click", () => {
+  if (music.paused) {
+    music.play();
+    btn.innerHTML = "🔊";
+  } else {
+    music.pause();
+    btn.innerHTML = "🔇";
+  }
 });
+    
 </script>
     <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">
