@@ -9,6 +9,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
+    .bolly-overlay {
+    pointer-events: none;
+    }
+    .bolly-card {
+    position: relative;
+    z-index: 5;
+    cursor: pointer;
+    }
     .sparkle,
 .petal,
 .floral {
@@ -502,7 +510,7 @@ body {
     to { box-shadow: 0 0 20px rgba(201,163,74,0.8); }
 }
 
-    /* hhsjsdjdjdjd*/
+    /* hhsjsdjdjdjd
     #entryScreen {
     position: fixed;
     width: 100%;
@@ -510,7 +518,7 @@ body {
     background: #f5e6dc;
     z-index: 9999;
     overflow: hidden;
-}
+}*/
 
 /* CARD WRAPPER */
 .card-wrapper {
@@ -573,7 +581,7 @@ body {
 }
 
 
-    /*****************/
+    /****************
     #entryScreen {
     position: fixed;
     width: 100%;
@@ -583,8 +591,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1200px; /* 3D depth */
-}
+    perspective: 1200px; /* 3D depth 
+} */
 
 /* CARD CONTAINER */
 .card3d {
@@ -954,24 +962,23 @@ function createGoldParticles() {
 setInterval(createGoldParticles, 1500);
 
 
-// TAP TO ENTER
-entry.addEventListener("click", () => {
+// TAP TO enter
+document.querySelector(".bolly-card").addEventListener("click", openInvite);
+entry.addEventListener("click", openInvite);
 
-  // Play music (works on mobile)
+function openInvite() {
   music.play().catch(() => {});
 
-  // Zoom effect
   document.body.style.transform = "scale(1.1)";
   document.body.style.transition = "transform 1s";
 
-  // Fade out
   entry.classList.add("fadeOut");
 
   setTimeout(() => {
     entry.style.display = "none";
     document.body.style.transform = "scale(1)";
   }, 1500);
-});
+}
 
 
 // MUSIC BUTTON
