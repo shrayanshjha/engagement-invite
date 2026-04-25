@@ -63,12 +63,37 @@ body {
     font-size: 34px;
     color: #b68b2c;
 }
+.couple,
+.floral,
+.frame1,
+.frame2 {
+    transform: none !important;
+}
+    .couple {
+    position: fixed;
+    z-index: 3;
+}
+    .container {
+    transform: translateZ(0);
+    }
 
+.floral {
+    position: fixed;
+    z-index: 1;
+}
 /* HEART */
 .heart {
-    font-size: 30px;
-    color: red;
-    animation: heartbeat 1.2s infinite, glow 2s infinite alternate;
+    display: inline-block;
+    font-size: 28px;
+    margin: 8px 0;
+
+    animation: heartbeat 1.2s infinite;
+
+    transform-origin: center;
+    will-change: transform;
+
+    position: relative;   /* IMPORTANT */
+    z-index: 2;
 }
 @keyframes heartbeat {
     50% { transform: scale(1.2); }
