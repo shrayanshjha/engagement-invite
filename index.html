@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Shrayansh ❤️ Payal | Engagement</title>
+<title>Engagement</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
 
-/* BACKGROUND */
+/* BODY */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -38,43 +38,21 @@ body {
     position: fixed;
     top: 20px;
     left: 20px;
-    font-size: 28px;
+    font-size: 26px;
 }
 
-/* ENTRY SCREEN */
-#entryScreen {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, #2b0f0f, #000);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.bolly-card {
-    padding: 40px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #c9a34a, #fff2c2);
-    cursor: pointer;
-    text-align: center;
-    animation: float 3s infinite;
-}
-@keyframes float {
-    50% { transform: translateY(-10px); }
-}
-
-/* MAIN CONTENT */
+/* CONTAINER */
 .container {
     text-align: center;
-    padding: 80px 20px;
+    padding: 90px 20px 220px; /* extra bottom space for image */
+    position: relative;
+    z-index: 5;
 }
 
 /* TITLE */
 .title {
     font-family: 'Cinzel', serif;
-    font-size: 26px;
+    font-size: 28px;
     color: #b68b2c;
     text-shadow: 0 0 10px gold;
 }
@@ -88,48 +66,61 @@ body {
 
 /* HEART */
 .heart {
-    font-size: 28px;
+    font-size: 30px;
     color: red;
-    animation: heartbeat 1.2s infinite;
+    animation: heartbeat 1.2s infinite, glow 2s infinite alternate;
 }
 @keyframes heartbeat {
-    0%,100% { transform: scale(1); }
     50% { transform: scale(1.2); }
+}
+@keyframes glow {
+    from { text-shadow: 0 0 5px red; }
+    to { text-shadow: 0 0 15px red; }
 }
 
 /* TAGLINE */
 .tagline {
-    font-size: 12px;
-    color: #555;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    margin: 10px 0;
+}
+.amp {
+    font-size: 16px;
 }
 
 /* BUTTON */
 .button {
-    padding: 10px 20px;
+    display: inline-block;
+    margin: 15px 0;
+    padding: 12px 25px;
+    border-radius: 25px;
     background: #c9a34a;
     color: white;
-    border-radius: 20px;
     text-decoration: none;
+    font-weight: bold;
 }
 
 /* COUNTDOWN */
 #countdown {
     margin-top: 20px;
-    padding: 10px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.7);
+    padding: 12px 20px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.8);
+    display: inline-block;
 }
 
-/* COUPLE IMAGE */
+/* COUPLE IMAGE (FIXED + VISIBLE) */
 .couple {
     position: fixed;
     bottom: 0;
     left: -200px;
-    width: 300px;
-    animation: moveCouple 4s forwards;
+    width: 320px;
+    z-index: 2;
+    animation: moveCouple 3s ease forwards;
 }
 @keyframes moveCouple {
-    to { left: 60%; }
+    from { left: -200px; }
+    to { left: calc(100% - 320px); }
 }
 
 /* FLORAL */
@@ -137,9 +128,19 @@ body {
     position: fixed;
     width: 120px;
     height: 120px;
+    z-index: 1;
 }
 .floral-left { bottom: 20px; left: 10px; }
 .floral-right { top: 20px; right: 10px; }
+
+.floral::before {
+    content: "";
+    width: 80px;
+    height: 80px;
+    background: pink;
+    border-radius: 50%;
+    position: absolute;
+}
 
 /* SPARKLES */
 .sparkle {
@@ -154,21 +155,32 @@ body {
     50% { opacity: 0.2; }
 }
 
-/* FLOAT HEARTS */
+/* FLOAT HEART */
 .float-heart {
     position: fixed;
     color: red;
     animation: floatUp 2s linear;
 }
 @keyframes floatUp {
-    to { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(-120px); opacity: 0; }
 }
 
-/* MUSIC BUTTON */
-#musicBtn {
+/* ENTRY SCREEN */
+#entryScreen {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #2b0f0f, #000);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bolly-card {
+    padding: 40px;
+    background: linear-gradient(#c9a34a,#fff2c2);
+    border-radius: 20px;
+    cursor: pointer;
 }
 
 /* FIREWORK */
@@ -189,109 +201,89 @@ body {
 
 <body>
 
-<!-- ENTRY -->
 <div id="entryScreen">
-  <div class="bolly-card" onclick="openInvite()">
-    Engagement 💍 <br> Tap to Open
-  </div>
+  <div class="bolly-card" onclick="openInvite()">Tap to Open 💍</div>
 </div>
 
 <div class="frame1"></div>
 <div class="frame2"></div>
-
 <div class="ring">💍💍</div>
 
 <div class="container">
-    <div class="title">Engagement Invitation</div>
 
-    <div class="name">Shrayansh</div>
-    <div class="heart">❤️</div>
-    <div class="name">Payal</div>
+<div class="title">Engagement Invitation</div>
 
-    <div class="tagline">Celebrate love & happily ever after</div>
+<div class="name">Shrayansh</div>
+<div class="heart">❤️</div>
+<div class="name">Payal</div>
 
-    <div><b>04 May 2026</b></div>
-    <div>📍 Hotel GK Jain</div>
+<div class="tagline">
+<div>Celebrating love</div>
+<div class="amp">&</div>
+<div>happily ever after</div>
+</div>
 
-    <a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6" target="_blank">
-        Get Directions 🚗
-    </a>
+<div><b>04 May 2026</b></div>
+<div>📍 Hotel GK Jain</div>
 
-    <div id="countdown"></div>
+<a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6" target="_blank">
+Get Directions 🚗
+</a>
+
+<div id="countdown"></div>
+
 </div>
 
 <img src="couple.png" class="couple">
-
 <div class="floral floral-left"></div>
 <div class="floral floral-right"></div>
 
 <audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
+<source src="music.mp3">
 </audio>
-
-<button id="musicBtn" onclick="toggleMusic()">🔇</button>
 
 <script>
 
-/* OPEN INVITE */
-function openInvite() {
-    document.getElementById("entryScreen").style.display = "none";
-    document.getElementById("bgMusic").play();
-
-    fireworks();
-    createSparkles();
+/* OPEN */
+function openInvite(){
+ document.getElementById("entryScreen").style.display="none";
+ document.getElementById("bgMusic").play();
+ fireworks();
 }
 
 /* COUNTDOWN */
 var countDownDate = new Date("May 4, 2026 13:00:00").getTime();
 
-setInterval(function() {
-  var now = new Date().getTime();
-  var d = Math.floor((countDownDate - now) / (1000*60*60*24));
-  document.getElementById("countdown").innerHTML = "⏳ " + d + " days left";
-}, 1000);
+setInterval(function(){
+ let now=new Date().getTime();
+ let d=Math.floor((countDownDate-now)/(1000*60*60*24));
+ let h=Math.floor((countDownDate-now)/(1000*60*60)%24);
+ let m=Math.floor((countDownDate-now)/(1000*60)%60);
 
-/* MUSIC */
-function toggleMusic() {
-  let music = document.getElementById("bgMusic");
-  if (music.paused) {
-    music.play();
-  } else {
-    music.pause();
-  }
+ document.getElementById("countdown").innerHTML =
+ "⏳ "+d+" Days | "+h+" Hrs | "+m+" Min";
+},1000);
+
+/* FIREWORK */
+function fireworks(){
+ for(let i=0;i<20;i++){
+  let f=document.createElement("div");
+  f.className="firework";
+  f.style.left=Math.random()*100+"%";
+  f.style.top=Math.random()*100+"%";
+  document.body.appendChild(f);
+ }
 }
 
-/* SPARKLES */
-function createSparkles() {
-    for (let i = 0; i < 30; i++) {
-        let s = document.createElement("div");
-        s.className = "sparkle";
-        s.style.left = Math.random()*100+"%";
-        s.style.top = Math.random()*100+"%";
-        document.body.appendChild(s);
-    }
-}
-
-/* FIREWORKS */
-function fireworks() {
-    for (let i=0;i<20;i++){
-        let f=document.createElement("div");
-        f.className="firework";
-        f.style.left=Math.random()*100+"%";
-        f.style.top=Math.random()*100+"%";
-        document.body.appendChild(f);
-    }
-}
-
-/* FLOAT HEARTS ON TOUCH */
+/* FLOAT HEART */
 document.addEventListener("click", function(e){
-    let h=document.createElement("div");
-    h.className="float-heart";
-    h.innerHTML="❤️";
-    h.style.left=e.clientX+"px";
-    h.style.top=e.clientY+"px";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),2000);
+ let h=document.createElement("div");
+ h.className="float-heart";
+ h.innerHTML="❤️";
+ h.style.left=e.clientX+"px";
+ h.style.top=e.clientY+"px";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),2000);
 });
 
 </script>
