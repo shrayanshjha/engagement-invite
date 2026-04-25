@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+6<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -455,10 +455,46 @@ body {
     font-style: italic;
     text-shadow: 0 0 6px rgba(255,255,255,0.6);
     }
+    #entryScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f5e6dc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.entry-text {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    color: #b68b2c;
+    border: 1px solid #c9a34a;
+    padding: 12px 24px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(4px);
+
+    animation: glowEnter 2s infinite alternate;
+}
+
+/* soft glow */
+@keyframes glowEnter {
+    from { box-shadow: 0 0 5px rgba(201,163,74,0.4); }
+    to { box-shadow: 0 0 20px rgba(201,163,74,0.8); }
+}
 </style>
 </head>
 
 <body>
+    <div id="entryScreen">
+  <div class="entry-content">
+    <div class="entry-text">Tap to Enter 🎵</div>
+  </div>
+    </div>
 <div id="sparkles"></div>
 <!-- FRAME -->
 <div class="frame1"></div>
@@ -578,27 +614,36 @@ function createStars() {
 
 // Create once (not continuous)
 createStars();
-    const music = document.getElementById("bgMusic");
-const btn = document.getElementById("musicBtn");
+const entry = document.getElementById("entryScreen");
+const music = document.getElementById("bgMusic");
 
-// Start muted (important for mobile autoplay)
-music.muted = true;
+entry.addEventListener("click", () => {
+    music.play();
+
+    // smooth fade out
+    entry.style.opacity = "0";
+    entry.style.transition = "opacity 1s";
+
+    setTimeout(() => {
+        entry.style.display = "none";
+    }, 1000);
+});
+    const btn = document.getElementById("musicBtn");
 
 btn.addEventListener("click", () => {
-    if (music.muted) {
-        music.muted = false;
+    if (music.paused) {
         music.play();
         btn.innerHTML = "🔊";
     } else {
-        music.muted = true;
+        music.pause();
         btn.innerHTML = "🔇";
     }
 });
 </script>
-    <audio id="bgMusic" autoplay loop>
-  <source src="music.mp3" type="audio/mpeg">
+    <audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio">
     </audio>
-    <button id="musicBtn">🔊</button>
+<button id="musicBtn">🔇</button>
 
 </body>
 </html>
