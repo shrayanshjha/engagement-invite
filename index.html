@@ -242,6 +242,21 @@ body {
 @keyframes explode {
     to { transform: scale(10); opacity: 0; }
 }
+/* NEW TWINKLING STARS */
+.star-blink {
+    position: fixed;
+    background: #b68b2c; /* Gold color to match your theme */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    box-shadow: 0 0 3px #f5e6dc;
+    animation: starTwinkle var(--speed) ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+    0%, 100% { opacity: 0.1; transform: scale(0.8); }
+    50% { opacity: 0.7; transform: scale(1.2); }
+}
 
 </style>
 </head>
@@ -344,6 +359,29 @@ btn.addEventListener("click", () => {
         btn.innerHTML = "🔇";
     }
 });
+    /* GENERATE STARS FUNCTION */
+function addStars() {
+    for (let i = 0; i < 50; i++) {
+        let s = document.createElement("div");
+        s.className = "star-blink";
+        let size = Math.random() * 3 + 1 + "px";
+        s.style.width = size;
+        s.style.height = size;
+        s.style.left = Math.random() * 100 + "vw";
+        s.style.top = Math.random() * 100 + "vh";
+        s.style.setProperty('--speed', (Math.random() * 2 + 2) + "s");
+        s.style.animationDelay = Math.random() * 5 + "s";
+        document.body.appendChild(s);
+    }
+}
+
+/* TRIGGER STARS ON OPEN */
+const originalOpenInvite = openInvite;
+openInvite = function() {
+    originalOpenInvite();
+    addStars();
+};
+
 </script>
 
 </body>
