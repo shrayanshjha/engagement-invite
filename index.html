@@ -18,6 +18,32 @@
     z-index: 5;
     cursor: pointer;
     }
+    #countdown {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 18px;
+
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+
+    color: #b68b2c;
+
+    background: rgba(255,255,255,0.7);
+    border: 1px solid #c9a34a;
+    border-radius: 30px;
+
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+    animation: glowCount 2s infinite alternate;
+}
+
+/* subtle glowing effect */
+@keyframes glowCount {
+    from { box-shadow: 0 0 5px rgba(201,163,74,0.4); }
+    to { box-shadow: 0 0 18px rgba(201,163,74,0.8); }
+}
 
     #musicBtn {
     position: fixed;
@@ -86,7 +112,7 @@
     50% { opacity: 1; transform: scale(1.2); }
     100% { opacity: 0.5; transform: scale(1); }
 }
-}
+
     .button:hover {
     box-shadow: 0 0 15px rgba(201,163,74,0.7);
     transform: scale(1.05);
@@ -617,6 +643,7 @@ createStars();
 
 
 /* ENTRY + MUSIC */
+    entry.addEventListener("click", openInvite);
 const entry = document.getElementById("entryScreen");
 const music = document.getElementById("bgMusic");
 const btn = document.getElementById("musicBtn");
