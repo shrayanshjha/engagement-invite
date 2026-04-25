@@ -10,12 +10,13 @@
 
 <style>
 
-/* RESET BLACK SPACE */
+/* RESET */
 html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
     background: #f5e6dc;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* ENTRY SCREEN */
@@ -35,7 +36,6 @@ html, body {
     border-radius: 20px;
     background: linear-gradient(135deg, #c9a34a, #fff2c2);
     box-shadow: 0 0 40px rgba(255,215,0,0.6);
-    text-align: center;
     cursor: pointer;
     animation: float 3s infinite ease-in-out;
 }
@@ -44,41 +44,21 @@ html, body {
     50% { transform: translateY(-10px); }
 }
 
-.entry-text {
-    font-family: 'Cinzel', serif;
-    font-size: 22px;
-}
-
-/* MAIN CONTAINER */
+/* CONTAINER */
 .container {
     text-align: center;
-    padding: 80px 20px;
+    padding: 80px 20px 140px;
     position: relative;
     z-index: 5;
-}
-
-/* FRAME */
-.frame1, .frame2 {
-    position: fixed;
-    border-radius: 20px;
-    pointer-events: none;
-}
-.frame1 {
-    top: 15px; left: 15px; right: 15px; bottom: 15px;
-    border: 2px solid #c9a34a;
-}
-.frame2 {
-    top: 25px; left: 25px; right: 25px; bottom: 25px;
-    border: 1px solid #c9a34a;
 }
 
 /* TITLE */
 .title {
     font-family: 'Cinzel', serif;
     font-size: 28px;
-    color: #b68b2c;
-    z-index: 10;
-    position: relative;
+    background: linear-gradient(90deg,#c9a34a,#fff2c2,#c9a34a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* NAMES */
@@ -95,14 +75,11 @@ html, body {
 }
 
 @keyframes heartbeat {
-    0% { transform: scale(1); }
     50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
 }
 
-/* QUOTE */
+/* TAGLINE */
 .tagline {
-    font-size: 13px;
     margin: 10px 0;
 }
 
@@ -121,57 +98,92 @@ html, body {
 #countdown {
     margin-top: 20px;
     padding: 10px 18px;
-    display: inline-block;
     border-radius: 25px;
     border: 1px solid #c9a34a;
 }
 
-/* COUPLE IMAGE (FIXED - NO MOVE) */
+/* COUPLE IMAGE (RIGHT + BIGGER) */
 .couple {
     position: fixed;
     bottom: 0;
     right: 0;
-    width: 60vw;
-    max-width: 320px;
+    width: 75vw;
+    max-width: 380px;
     z-index: 2;
     pointer-events: none;
 }
 
-/* FLORAL (FIXED - NO MOVE) */
+/* FLORAL */
 .floral {
     position: fixed;
     width: 120px;
     height: 120px;
     z-index: 1;
 }
-
 .floral-left { bottom: 20px; left: 10px; }
 .floral-right { top: 20px; right: 10px; }
 
 .floral::before {
     content: "";
-    position: absolute;
     width: 80px;
     height: 80px;
     background: pink;
     border-radius: 50%;
+    position: absolute;
 }
 
-/* FIREWORKS */
+/* SPARKLES */
+.sparkle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle, gold, white);
+    animation: sparkleAnim 1.5s forwards;
+}
+
+@keyframes sparkleAnim {
+    to { transform: scale(2); opacity: 0; }
+}
+
+/* STARS */
+.star {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+
+/* FIREWORK */
 .firework {
     position: fixed;
     width: 5px;
     height: 5px;
     background: gold;
     border-radius: 50%;
-    animation: explode 1s ease-out forwards;
+    animation: explode 1s forwards;
 }
 
 @keyframes explode {
-    to {
-        transform: scale(20);
-        opacity: 0;
-    }
+    to { transform: scale(20); opacity: 0; }
+}
+
+/* MUSIC BUTTON */
+#musicBtn {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    z-index: 999;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
 }
 
 </style>
@@ -181,82 +193,102 @@ html, body {
 
 <!-- ENTRY -->
 <div id="entryScreen">
-    <div class="bolly-card" onclick="openInvite()">
-        <div class="entry-text">
-            Engagement 💍<br>
-            <span>Tap to Open</span>
-        </div>
-    </div>
+  <div class="bolly-card" onclick="openInvite()">
+    Engagement 💍<br><small>Tap to Open</small>
+  </div>
 </div>
 
-<!-- FRAME -->
-<div class="frame1"></div>
-<div class="frame2"></div>
-
-<!-- MAIN -->
 <div class="container">
-
 <div class="title">Engagement Invitation</div>
 
 <div class="name">Shrayansh</div>
 <div class="heart">❤️</div>
 <div class="name">Payal</div>
 
-<div class="tagline">
-Celebrate love, laughter & happily ever after
-</div>
+<div class="tagline">Celebrate love & happily ever after</div>
 
 <div><b>04 May 2026</b></div>
 <div>📍 Hotel GK Jain</div>
 
-<a class="button" href="https://maps.app.goo.gl/zp1ytG2DvtsnHL5p6" target="_blank">
+<a class="button" href="https://www.google.com/maps/dir/?api=1&destination=Hotel+GK+Jain" target="_blank">
 Get Directions 🚗
 </a>
 
 <div id="countdown"></div>
-
 </div>
 
-<!-- DECOR -->
 <img src="couple.png" class="couple">
 <div class="floral floral-left"></div>
 <div class="floral floral-right"></div>
 
+<audio id="bgMusic" loop>
+<source src="music.mp3">
+</audio>
+
+<button id="musicBtn">🔇</button>
+
 <script>
+
+/* STARS */
+for(let i=0;i<40;i++){
+ let s=document.createElement("div");
+ s.className="star";
+ s.style.left=Math.random()*100+"vw";
+ s.style.top=Math.random()*100+"vh";
+ document.body.appendChild(s);
+}
 
 /* COUNTDOWN */
 var countDownDate = new Date("May 4, 2026 13:00:00").getTime();
+setInterval(()=>{
+ let now=new Date().getTime();
+ let d=Math.floor((countDownDate-now)/(1000*60*60*24));
+ let h=Math.floor((countDownDate-now)/(1000*60*60)%24);
+ let m=Math.floor((countDownDate-now)/(1000*60)%60);
+ document.getElementById("countdown").innerHTML =
+ "⏳ "+d+" Days | "+h+" Hrs | "+m+" Min";
+},1000);
 
-setInterval(function() {
-  var now = new Date().getTime();
-  var distance = countDownDate - now;
-
-  var d = Math.floor(distance / (1000*60*60*24));
-  var h = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-  var m = Math.floor((distance % (1000*60*60))/(1000*60));
-
-  document.getElementById("countdown").innerHTML =
-  "⏳ " + d + " Days | " + h + " Hours | " + m + " Min";
-}, 1000);
-
-/* OPEN INVITE */
-function openInvite() {
-    document.getElementById("entryScreen").style.display = "none";
-    fireworks();
+/* OPEN */
+function openInvite(){
+ document.getElementById("entryScreen").style.display="none";
+ document.getElementById("bgMusic").play();
+ fireworks();
+ sparkles();
 }
 
 /* FIREWORKS */
-function fireworks() {
-    for (let i = 0; i < 25; i++) {
-        let f = document.createElement("div");
-        f.className = "firework";
-        f.style.left = Math.random()*100 + "vw";
-        f.style.top = Math.random()*100 + "vh";
-        document.body.appendChild(f);
-
-        setTimeout(()=>f.remove(),1000);
-    }
+function fireworks(){
+ for(let i=0;i<25;i++){
+  let f=document.createElement("div");
+  f.className="firework";
+  f.style.left=Math.random()*100+"vw";
+  f.style.top=Math.random()*100+"vh";
+  document.body.appendChild(f);
+  setTimeout(()=>f.remove(),1000);
+ }
 }
+
+/* SPARKLES */
+function sparkles(){
+ for(let i=0;i<40;i++){
+  let s=document.createElement("div");
+  s.className="sparkle";
+  s.style.left=Math.random()*100+"vw";
+  s.style.top=Math.random()*100+"vh";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),1500);
+ }
+}
+
+/* MUSIC BUTTON */
+const music=document.getElementById("bgMusic");
+const btn=document.getElementById("musicBtn");
+
+btn.onclick=()=>{
+ if(music.paused){music.play();btn.innerHTML="🔊";}
+ else{music.pause();btn.innerHTML="🔇";}
+};
 
 </script>
 
